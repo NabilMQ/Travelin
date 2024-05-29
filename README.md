@@ -1,3 +1,3 @@
-# travelin
+# Travelin
 
-A new Flutter project.
+Solusi Terintegrasi untuk Rekomendasi, Wisata dan Kuliner
