@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/get_started_controller.dart';
 
 class GetStarted extends StatefulWidget {
   const GetStarted({ Key? key }) : super(key: key);
@@ -10,16 +11,6 @@ class GetStarted extends StatefulWidget {
 }
 
 class _GetStartedState extends State<GetStarted> {
-
-  CarouselController carouselController = CarouselController();  
-  ValueNotifier dotIndex = ValueNotifier(0);
-  Map <String, String> carouselData = {
-    "assets/Get Started (1).jpg": "Wujudkan Impian Liburanmu!",
-    "assets/Get Started (2).jpg": "Temukan Ribuan Destinasi Menakjubkan!",
-    "assets/Get Started (3).jpg": "Nikmati LiburanMu",
-    "assets/Get Started (4).jpg": "Pesan Tiket dengan Aman dan Nyaman",
-  };
-
   @override
   Widget build(BuildContext context) {
     
@@ -32,14 +23,14 @@ class _GetStartedState extends State<GetStarted> {
           behavior: HitTestBehavior.translucent,
           onHorizontalDragUpdate: (details) {
             if (details.delta.dx < 0) {
-              carouselController.nextPage(
+              getCarouselController.nextPage(
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.fastOutSlowIn,
               );
             }
 
             if (details.delta.dx > 0) {
-              carouselController.previousPage(
+              getCarouselController.previousPage(
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.fastOutSlowIn,
               );
@@ -52,7 +43,7 @@ class _GetStartedState extends State<GetStarted> {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: ValueListenableBuilder(
-                    valueListenable: dotIndex,
+                    valueListenable: getDotIndex,
                     builder:(context, value, child) {
                       return Opacity(
                       opacity: value == 3 ? 0 : 1,
@@ -120,7 +111,7 @@ class _GetStartedState extends State<GetStarted> {
               Expanded(
                 flex: 3,
                 child: CarouselSlider(
-                  carouselController: carouselController,
+                  carouselController: getCarouselController,
                   disableGesture: true,
                   options: CarouselOptions(
                     height: size.height,
@@ -128,10 +119,10 @@ class _GetStartedState extends State<GetStarted> {
                     enableInfiniteScroll: false,
                     scrollPhysics: const NeverScrollableScrollPhysics(),
                     onPageChanged: (index, reason) {
-                      dotIndex.value = index;
+                      getDotIndex.value = index;
                     },
                   ),
-                  items: carouselData.entries.map((e) {
+                  items: getCarouselData.entries.map((e) {
                     return Padding(
                       padding: const EdgeInsets.all(20),
                       child: Column(
@@ -193,7 +184,7 @@ class _GetStartedState extends State<GetStarted> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           ValueListenableBuilder(
-                            valueListenable: dotIndex,
+                            valueListenable: getDotIndex,
                               builder: (context, value, child) {
                                 return Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -247,7 +238,7 @@ class _GetStartedState extends State<GetStarted> {
                                 ),
                               ),
                               onPressed: () {
-                                carouselController.nextPage(
+                                getCarouselController.nextPage(
                                   duration: const Duration(milliseconds: 500),
                                   curve: Curves.fastOutSlowIn,
                                 );
