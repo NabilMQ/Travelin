@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/model/color_model.dart';
+import 'package:travelin/model/custom_style_mode.dart';
 
 String get getCustomFont {
-  return CustomStyle.customFont;
+  return CustomStyleModel.customFont;
 }
 
 Color get getOrangeColor {
-  return CustomStyle.orangeColor;
+  return CustomStyleModel.orangeColor;
 }
 
 Color get getGreyColor {
-  return CustomStyle.greyColor;
+  return CustomStyleModel.greyColor;
 }
 
 Color get getBlackColor {
-  return CustomStyle.blackColor;
+  return CustomStyleModel.blackColor;
 }
 
 Color get getWhiteColor {
-  return CustomStyle.whiteColor;
+  return CustomStyleModel.whiteColor;
 }
 
 Color get getTransparentColor {
-  return CustomStyle.transparentColor;
+  return CustomStyleModel.transparentColor;
 }

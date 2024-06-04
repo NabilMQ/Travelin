@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "431241685910",
+    "project_id": "travelin-e2b24",
+    "storage_bucket": "travelin-e2b24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431241685910:android:2fe36b88b8d226706e0bb7",
+        "android_client_info": {
+          "package_name": "com.example.travelin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0PUyYA5uQQYalZptGoSg13pXH7XL-TaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
