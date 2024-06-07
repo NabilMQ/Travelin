@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:travelin/controller/color_controller.dart';
 import 'package:travelin/controller/get_started_controller.dart';
 import 'package:travelin/view/auth/auth.dart';
-import 'package:travelin/view/getStarted/get_started.dart';
 
 class NextButton extends StatefulWidget {
-  const NextButton({ Key? key }) : super(key: key);
+  const NextButton({Key? key}) : super(key: key);
 
   @override
-  State <NextButton> createState() => _NextButtonState();
+  State<NextButton> createState() => _NextButtonState();
 }
 
 class _NextButtonState extends State<NextButton> {
@@ -37,6 +36,9 @@ class _NextButtonState extends State<NextButton> {
         onPressed: () {
           if (isEndCarousel()) {
             try {
+              setState(() {
+                setIsNextPage = true;
+              });
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 Navigator.of(context).popUntil((route) => true);
                 Navigator.of(context).pushReplacement(
@@ -46,9 +48,9 @@ class _NextButtonState extends State<NextButton> {
                       const Offset begin = Offset(1.0, 0.0);
                       const Offset end = Offset.zero;
                       const Curve curve = Curves.ease;
-                            
+
                       Animatable<Offset> tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-                            
+
                       return SlideTransition(
                         position: animation.drive(tween),
                         child: child,
@@ -57,12 +59,10 @@ class _NextButtonState extends State<NextButton> {
                   ),
                 );
               });
-            } 
-            catch (error) {
+            } catch (error) {
               setState(() {});
             }
-          }
-          else {
+          } else {
             getCarouselController.nextPage(
               duration: const Duration(milliseconds: 500),
               curve: Curves.fastOutSlowIn,
