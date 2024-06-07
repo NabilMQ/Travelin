@@ -6,6 +6,7 @@ mixin CustomStyleModel {
   static Color blackColor = Colors.black;
   static Color whiteColor = Colors.white;
   static Color transparentColor = Colors.transparent;
+  static Color redColor = const Color.fromRGBO(251, 39, 66, 1);
 
   static String customFont = "Poppins";
 }
