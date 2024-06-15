@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelin/controller/auth_controller.dart';
 import 'package:travelin/controller/color_controller.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travelin/view/getStarted/get_started.dart';
@@ -12,54 +13,18 @@ class Auth extends StatefulWidget {
 
 class _AuthState extends State<Auth> {
 
-  // Masukkin ke custom style model
-  Color redColor = const Color.fromRGBO(251, 39, 66, 1);
-  // Batas model
-
-
-  // Jadiin model baru
-  TextEditingController emailController = TextEditingController();
-  static FocusNode emailFocus = FocusNode();
-  ValueNotifier isEmailFocused = ValueNotifier <bool>(false);
-  ValueNotifier isEmailError = ValueNotifier <bool>(false);
-
-  TextEditingController passwordController = TextEditingController();
-  static FocusNode passwordFocus = FocusNode();
-  ValueNotifier isPasswordFocused = ValueNotifier <bool>(false);
-  ValueNotifier isPasswordError = ValueNotifier <bool>(false);
-  ValueNotifier isPasswordHidden = ValueNotifier(true);
-
-  // Buat fungsi login dan logout
-
-  void onEmailFocusChange() {
-    isEmailFocused.value = !isEmailFocused.value;
-  }
-
-  bool validateEmail(String value) {
-    return RegExp(r"(\w+?@\w+?\.\w+)$").hasMatch(value);
-  }
-
-  bool validatePassword(String value) {
-    return value.length < 8;
-  }
-
-  void onPasswordFocusChange() {
-    isPasswordFocused.value = !isPasswordFocused.value;
-  }
-  // Batas model
-
   @override
   void initState() {
     super.initState();
-    emailFocus.addListener(onEmailFocusChange);
-    passwordFocus.addListener(onPasswordFocusChange);
+    getEmailFocus.addListener(onEmailFocusChange);
+    getPasswordFocus.addListener(onPasswordFocusChange);
   }
 
   @override
   void dispose() {
     isNextPage = false;
-    emailFocus.removeListener(onEmailFocusChange);
-    passwordFocus.removeListener(onPasswordFocusChange);
+    getEmailFocus.removeListener(onEmailFocusChange);
+    getPasswordFocus.removeListener(onPasswordFocusChange);
     super.dispose();
   }
 
@@ -143,17 +108,17 @@ class _AuthState extends State<Auth> {
                           Expanded(
                             flex: 1,
                             child: ValueListenableBuilder(
-                              valueListenable: isEmailError,
+                              valueListenable: getIsEmailError,
                               builder: (context, isEmailErrorValue, child) {
                                 return ValueListenableBuilder(
-                                  valueListenable: isEmailFocused,
+                                  valueListenable: getIsEmailFocused,
                                   builder: (context, isEmailFocusedValue, child) {
                                     return Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: isEmailErrorValue ? redColor : isEmailFocusedValue ? getOrangeColor : getGreyColor,
+                                            color: isEmailErrorValue ? getRedColor : isEmailFocusedValue ? getOrangeColor : getGreyColor,
                                             blurRadius: 5,
                                             spreadRadius: 0,
                                           ),
@@ -162,20 +127,20 @@ class _AuthState extends State<Auth> {
                                       ),
                                       child: Center(
                                         child: TextField(
-                                          controller: emailController,
-                                          focusNode: emailFocus,
+                                          controller: getEmailController,
+                                          focusNode: getEmailFocus,
                                           keyboardType: TextInputType.emailAddress,
                                           onSubmitted: (value) {
                                             if (!validateEmail(value)) {
-                                              isEmailError.value = true;
+                                              getIsEmailError.value = true;
                                             }
                                             else {
-                                              isEmailError.value = false;
+                                              getIsEmailError.value = false;
                                             }
                                           },
                                           onChanged: (value) {
                                             if (validateEmail(value)) {
-                                              isEmailError.value = false;
+                                              getIsEmailError.value = false;
                                             }
                                           },
                                           decoration: InputDecoration(
@@ -193,7 +158,7 @@ class _AuthState extends State<Auth> {
                                                     Text(
                                                       "Wrong email format",
                                                       style: TextStyle(
-                                                        color: redColor,
+                                                        color: getRedColor,
                                                         fontFamily: getCustomFont,
                                                         fontSize: 9,
                                                         fontWeight: FontWeight.normal,
@@ -211,7 +176,7 @@ class _AuthState extends State<Auth> {
                                             ) : const SizedBox.shrink(),
                                             hintText: "Email",
                                             hintStyle: TextStyle(
-                                              color: isEmailErrorValue ? redColor : isEmailFocusedValue ? getOrangeColor : getGreyColor,
+                                              color: isEmailErrorValue ? getRedColor : isEmailFocusedValue ? getOrangeColor : getGreyColor,
                                               fontSize: 15,
                                               fontWeight: FontWeight.normal,
                                               fontFamily: getCustomFont,  
@@ -231,17 +196,17 @@ class _AuthState extends State<Auth> {
                           Expanded(
                             flex: 1,
                             child: ValueListenableBuilder(
-                              valueListenable: isPasswordError,
+                              valueListenable: getIsPasswordError,
                               builder: (context, isPasswordErrorValue, child) {
                                 return ValueListenableBuilder(
-                                  valueListenable: isPasswordFocused,
+                                  valueListenable: getIsPasswordFocused,
                                   builder: (context, isPasswordFocusedValue, child) {
                                     return Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: isPasswordErrorValue ? redColor : isPasswordFocusedValue ? getOrangeColor : getGreyColor,
+                                            color: isPasswordErrorValue ? getRedColor : isPasswordFocusedValue ? getOrangeColor : getGreyColor,
                                             blurRadius: 5,
                                             spreadRadius: 0,
                                           ),
@@ -250,23 +215,23 @@ class _AuthState extends State<Auth> {
                                       ),
                                       child: Center(
                                         child: ValueListenableBuilder(
-                                          valueListenable: isPasswordHidden,
+                                          valueListenable: getIsPasswordHidden,
                                           builder: (context, isPasswordHiddenValue, child) {
                                             return TextField(
-                                              controller: passwordController,
-                                              focusNode: passwordFocus,
+                                              controller: getPasswordController,
+                                              focusNode: getPasswordFocus,
                                               obscureText: isPasswordHiddenValue,
                                               onSubmitted: (value) {
                                                 if (validatePassword(value)) {
-                                                  isPasswordError.value = true;
+                                                  getIsPasswordError.value = true;
                                                 }
                                                 else {
-                                                  isPasswordError.value = false;
+                                                  getIsPasswordError.value = false;
                                                 }
                                               },
                                               onChanged: (value) {
                                                 if (!validatePassword(value)) {
-                                                  isPasswordError.value = false;
+                                                  getIsPasswordError.value = false;
                                                 }
                                               },
                                               decoration: InputDecoration(
@@ -291,7 +256,7 @@ class _AuthState extends State<Auth> {
                                                               Text(
                                                                 "Minimum password length is 8 character",
                                                                 style: TextStyle(
-                                                                  color: redColor,
+                                                                  color: getRedColor,
                                                                   fontFamily: getCustomFont,
                                                                   fontSize: 9,
                                                                   fontWeight: FontWeight.normal,
@@ -312,12 +277,12 @@ class _AuthState extends State<Auth> {
                                                         flex: 1,
                                                         child: GestureDetector(
                                                           onTap: () {
-                                                            isPasswordHidden.value = !isPasswordHidden.value;
+                                                            getIsPasswordHidden.value = !getIsPasswordHidden.value;
                                                           },
                                                           child: SvgPicture.asset(
                                                             isPasswordHiddenValue ? "assets/icons/Close Eye Black.svg" : "assets/icons/Open Eye Black.svg",
                                                             fit: BoxFit.scaleDown,
-                                                            colorFilter: isPasswordErrorValue ? ColorFilter.mode(redColor, BlendMode.srcIn) : isPasswordFocusedValue ? ColorFilter.mode(getOrangeColor, BlendMode.srcIn) : null,
+                                                            colorFilter: isPasswordErrorValue ? ColorFilter.mode(getRedColor, BlendMode.srcIn) : isPasswordFocusedValue ? ColorFilter.mode(getOrangeColor, BlendMode.srcIn) : null,
                                                             alignment: Alignment.centerRight,
                                                           )
                                                         ),
@@ -327,7 +292,7 @@ class _AuthState extends State<Auth> {
                                                 ),
                                                 hintText: "Password",
                                                 hintStyle: TextStyle(
-                                                  color: isPasswordErrorValue? redColor : isPasswordFocusedValue ? getOrangeColor : getGreyColor,
+                                                  color: isPasswordErrorValue? getRedColor : isPasswordFocusedValue ? getOrangeColor : getGreyColor,
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.normal,
                                                   fontFamily: getCustomFont,  

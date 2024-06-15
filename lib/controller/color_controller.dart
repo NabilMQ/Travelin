@@ -24,3 +24,7 @@ Color get getWhiteColor {
 Color get getTransparentColor {
   return CustomStyleModel.transparentColor;
 }
+
+Color get getRedColor {
+  return CustomStyleModel.redColor;
+}
