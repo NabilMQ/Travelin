@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class ImageContent extends StatefulWidget {
   const ImageContent({
-    Key? key,
+    super.key,
     required this.image, 
-  }) : super(key: key);
+  });
 
   final String image;
 
@@ -15,10 +15,13 @@ class ImageContent extends StatefulWidget {
 class _ImageContentState extends State<ImageContent> {
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      widget.image, 
-      alignment: Alignment.bottomCenter,
-      fit: BoxFit.scaleDown,
+    return Expanded(
+      flex: 8,
+      child: Image.asset(
+        widget.image, 
+        alignment: Alignment.bottomCenter,
+        fit: BoxFit.scaleDown,
+      ),
     );
   }
 }

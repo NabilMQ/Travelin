@@ -1,11 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:travelin/firebase_options.dart';
 import 'package:travelin/view/getStarted/get_started.dart';
+import 'package:travelin/view/signUp/sign_up.dart';
 
-void main() {
+Future <void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MainApp());
 }
-
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
@@ -37,7 +43,7 @@ class MainApp extends StatelessWidget {
 }
 
 class Main extends StatefulWidget {
-  const Main({ Key? key }) : super(key: key);
+  const Main({ super.key });
 
   @override
   State <Main> createState() => _MainState();
@@ -49,3 +55,10 @@ class _MainState extends State<Main> {
     return const GetStarted();
   }
 }
+
+// class _MainState extends State<Main> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const SignUp();
+//   }
+// }

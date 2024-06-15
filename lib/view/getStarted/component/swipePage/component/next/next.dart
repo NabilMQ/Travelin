@@ -3,7 +3,7 @@ import 'package:travelin/view/getStarted/component/swipePage/component/next/comp
 import 'package:travelin/view/getStarted/component/swipePage/component/next/component/next_button.dart';
 
 class Next extends StatefulWidget {
-  const Next({ Key? key }) : super(key: key);
+  const Next({ super.key });
 
   @override
   State <Next> createState() => _NextState();
@@ -12,29 +12,24 @@ class Next extends StatefulWidget {
 class _NextState extends State<Next> {
   @override
   Widget build(BuildContext context) {
-    
-    Size size = MediaQuery.of(context).size;
-
-    return Padding(
-      padding: const EdgeInsets.all(20),
-        child: Align(
+    return const Padding(
+      padding: EdgeInsets.all(20),
+      child: Align(
           alignment: Alignment.bottomCenter,
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const CarouselIndex(),
-                        
-                const SizedBox(height: 20),
-                        
-                const NextButton(),
-            
-                SizedBox(height: size.height * 0.1),
-              ],
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              CarouselIndex(),
+                      
+              NextButton(),
+
+              Expanded(
+                flex: 1,
+                child: SizedBox.shrink(),
+              ),
+            ],
           ),
         ),
-      );
+    );
   }
 }

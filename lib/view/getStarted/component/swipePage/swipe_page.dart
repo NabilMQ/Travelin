@@ -6,10 +6,10 @@ import 'package:travelin/view/getStarted/component/swipePage/component/next/next
 import 'package:travelin/view/getStarted/component/swipePage/component/skip_button/skip_button.dart';
 
 class SwipePage extends StatefulWidget {
-  const SwipePage({Key? key}) : super(key: key);
+  const SwipePage({ super.key });
 
   @override
-  State<SwipePage> createState() => _SwipePageState();
+  State <SwipePage> createState() => _SwipePageState();
 }
 
 class _SwipePageState extends State<SwipePage> {
@@ -21,9 +21,7 @@ class _SwipePageState extends State<SwipePage> {
         onHorizontalDragUpdate: (details) {
           if (rightToLeftSwipeToAuth(details) && !getIsNextPage) {
             try {
-              setState(() {
-                setIsNextPage = true;
-              });
+              setIsNextPage = true;
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 Navigator.of(context).popUntil((route) => true);
                 Navigator.of(context).pushReplacement(
@@ -33,9 +31,9 @@ class _SwipePageState extends State<SwipePage> {
                       const Offset begin = Offset(1.0, 0.0);
                       const Offset end = Offset.zero;
                       const Curve curve = Curves.ease;
-
+                            
                       Animatable<Offset> tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
+                            
                       return SlideTransition(
                         position: animation.drive(tween),
                         child: child,
@@ -44,15 +42,18 @@ class _SwipePageState extends State<SwipePage> {
                   ),
                 );
               });
-            } catch (error) {
+            } 
+            catch (error) {
               setState(() {});
             }
-          } else if (rightToLeftSwipe(details)) {
+          }
+          else if (rightToLeftSwipe(details)) {
             getCarouselController.nextPage(
               duration: const Duration(milliseconds: 500),
               curve: Curves.fastOutSlowIn,
             );
-          } else if (leftToRightSwipe(details)) {
+          }
+          else if (leftToRightSwipe(details)) {
             getCarouselController.previousPage(
               duration: const Duration(milliseconds: 500),
               curve: Curves.fastOutSlowIn,
@@ -61,15 +62,19 @@ class _SwipePageState extends State<SwipePage> {
         },
         child: const Column(
           children: [
-            SkipButton(),
+            Expanded(
+              child: SkipButton()
+            ),
+              
             Expanded(
               flex: 3,
               child: CarouselContent(),
             ),
+              
             Expanded(
               flex: 2,
               child: Next(),
-            ),
+            )
           ],
         ),
       ),

@@ -6,7 +6,7 @@ import 'package:travelin/view/getStarted/component/swipePage/component/carousel/
 import 'package:travelin/view/getStarted/component/swipePage/component/carousel/component/image_content.dart';
 
 class CarouselContent extends StatefulWidget {
-  const CarouselContent({ Key? key }) : super(key: key);
+  const CarouselContent({ super.key });
 
   @override
   State <CarouselContent> createState() => _CarouselContentState();
@@ -37,12 +37,8 @@ class _CarouselContentState extends State<CarouselContent> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ImageContent(image: e.key),
-                      
-              const SizedBox(height: 20),
                     
               CarouselText(text: e.value),
-                            
-              const SizedBox(height: 10),
                             
               const CarouselStaticText(),
             ],

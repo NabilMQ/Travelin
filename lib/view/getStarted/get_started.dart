@@ -4,32 +4,11 @@ import 'package:travelin/controller/get_started_controller.dart';
 import 'package:travelin/view/getStarted/component/swipePage/swipe_page.dart';
 
 class GetStarted extends StatefulWidget {
-  const GetStarted({ Key? key }) : super(key: key);
+  const GetStarted({ super.key });
 
   @override
   State <GetStarted> createState() => _GetStartedState();
 }
-
-// Update Model
-
-bool isNextPage = false;
-
-bool isEndCarousel() {
-  return getDotIndex.value == 3;
-}
-
-bool rightToLeftSwipe(DragUpdateDetails details) {
-  return details.delta.dx < -8;
-}
-
-bool rightToLeftSwipeToAuth(DragUpdateDetails details) {
-  return rightToLeftSwipe(details) && isEndCarousel();
-}
-
-bool leftToRightSwipe(DragUpdateDetails details) {
-  return details.delta.dx > 8;
-}
-// Batas Model
 
 class _GetStartedState extends State<GetStarted> {
 
@@ -43,7 +22,7 @@ class _GetStartedState extends State<GetStarted> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: getWhiteColor,
-      body: const SwipePage(),
+      body: const SwipePage()
     );
   }
 }
