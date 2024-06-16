@@ -14,23 +14,27 @@ class _FooterState extends State<Footer> {
 
     Size size = MediaQuery.of(context).size;
 
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Container(
-          width: size.width,
-          padding: const EdgeInsets.all(5),
-          child: Text(
-            "Copyrigt 2024 - Travelin",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: getBlackColor,
-              fontFamily: getCustomFont,
-              fontWeight: FontWeight.normal,
-              fontSize: 12,
-            ),
-          )
+    return SizedBox(
+      width: size.width,
+      height: 50,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Container(
+            width: size.width,
+            padding: const EdgeInsets.all(5),
+            child: Text(
+              "Copyrigt 2024 - Travelin",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: getBlackColor,
+                fontFamily: getCustomFont,
+                fontWeight: FontWeight.normal,
+                fontSize: 12,
+              ),
+            )
+          ),
         ),
       ),
     );

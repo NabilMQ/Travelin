@@ -63,8 +63,6 @@ class _AuthState extends State<Auth> {
               HeaderIllustration(),
           
               Body(),
-
-              
             ],
           ),
         ),

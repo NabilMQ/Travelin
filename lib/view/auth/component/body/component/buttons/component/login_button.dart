@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:travelin/controller/auth_controller.dart';
 import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/view/home/home.dart';
 
 class LoginButton extends StatefulWidget {
   const LoginButton({ super.key });
@@ -36,8 +38,16 @@ class _LoginButtonState extends State<LoginButton> {
             foregroundColor: MaterialStatePropertyAll(getOrangeColor),
             overlayColor: MaterialStatePropertyAll(getOrangeColor),
           ),
-          onPressed: () {
-            
+          onPressed: () async {
+            await signUserIn(getEmailController.text, getPasswordController.text).then((value) {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const Home();
+                  },
+                )
+              );
+            });
           },
           child: Center(
             child: FittedBox(

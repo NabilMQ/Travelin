@@ -1,9 +1,9 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:travelin/controller/color_controller.dart';
 import 'package:travelin/view/signUp/sign_up.dart';
+import 'dart:math';
 
 class IdTypeTextField extends StatefulWidget {
   const IdTypeTextField({ super.key });
@@ -60,13 +60,29 @@ class _IdTypeTextFieldState extends State<IdTypeTextField> {
                       color: isIdTypeErrorValue ? getRedColor : getGreyColor,
                       fontSize: 15,
                       fontWeight: FontWeight.normal,
-                    )
+                    ),
+                    closedSuffixIcon: SvgPicture.asset(
+                      "assets/icons/Arrow Down.svg",
+                      fit: BoxFit.scaleDown,
+                      colorFilter: isIdTypeErrorValue ? ColorFilter.mode(getRedColor, BlendMode.srcIn) : isIdTypeFocusedValue ? ColorFilter.mode(getOrangeColor, BlendMode.srcIn) : ColorFilter.mode(getGreyColor, BlendMode.srcIn),
+                    ),
+                    expandedSuffixIcon: Transform.rotate(
+                      angle: pi,
+                      child: SvgPicture.asset(
+                        "assets/icons/Arrow Down.svg",
+                        fit: BoxFit.scaleDown,
+                        colorFilter: isIdTypeErrorValue ? ColorFilter.mode(getRedColor, BlendMode.srcIn) : isIdTypeFocusedValue ? ColorFilter.mode(getOrangeColor, BlendMode.srcIn) : ColorFilter.mode(getGreyColor, BlendMode.srcIn),
+                      ),
+                    ),
                   ),
                   items: const [
                     "KTP",
                     "SIM",
                   ],
                   onChanged: (value) {
+                    isIdTypeError.value = false;
+                    isIdTypeFocusedValue = false;
+                    userIdType = value.toString();
                     debugPrint("Changed to $value");
                   },
                 ),

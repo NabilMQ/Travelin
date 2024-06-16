@@ -55,7 +55,7 @@ void onPasswordFocusChange() {
 }
 
 //sign user in method
-void signUserIn(String email, String password) async {
+Future <void> signUserIn(String email, String password) async {
   // try sign in 
   try {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -79,6 +79,6 @@ void signUserIn(String email, String password) async {
 final user = FirebaseAuth.instance.currentUser!;
 
 //sign user out method
-void signUserOut() {
-  FirebaseAuth.instance.signOut();
+Future <void> signUserOut() async {
+  await FirebaseAuth.instance.signOut();
 }

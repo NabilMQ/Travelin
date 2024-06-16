@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:travelin/controller/color_controller.dart';
 
 class ErrorText extends StatefulWidget {
@@ -29,14 +30,25 @@ class _ErrorTextState extends State<ErrorText> {
             alignment: Alignment.centerLeft,
             child: FittedBox(
               fit: BoxFit.scaleDown,
-              child: Text(
-                widget.errorMessage,
-                style: TextStyle(
-                  color: isErrorValue ? getRedColor : getTransparentColor,
-                  fontFamily: getCustomFont,
-                  fontSize: 9,
-                  fontWeight: FontWeight.normal,
-                ),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/Red Alert.svg",
+                    colorFilter: isErrorValue ? ColorFilter.mode(getRedColor, BlendMode.srcATop) : ColorFilter.mode(getTransparentColor, BlendMode.clear),
+                  ),
+                                                
+                  const SizedBox(width: 5),
+
+                  Text(
+                    widget.errorMessage,
+                    style: TextStyle(
+                      color: isErrorValue ? getRedColor : getTransparentColor,
+                      fontFamily: getCustomFont,
+                      fontSize: 9,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
               ),
             ),
           );

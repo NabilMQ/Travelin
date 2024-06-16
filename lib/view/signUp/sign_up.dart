@@ -1,7 +1,6 @@
-import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
-import 'package:travelin/view/auth/component/body/component/passwordTextField/password_form_field.dart';
 import 'package:travelin/view/signUp/component/dateOfBirth/date_of_birth_text.dart';
 import 'package:travelin/view/signUp/component/dateOfBirth/date_of_birth_text_field.dart';
 import 'package:travelin/view/signUp/component/email/email_text.dart';
@@ -13,8 +12,6 @@ import 'package:travelin/view/signUp/component/full_name/full_name_text_field.da
 import 'package:travelin/view/signUp/component/gender/gender_text.dart';
 import 'package:travelin/view/signUp/component/gender/gender_option.dart';
 import 'package:travelin/view/signUp/component/header/header.dart';
-import 'package:travelin/view/signUp/component/idTypeNoId/component/noId/no_id_text.dart';
-import 'package:travelin/view/signUp/component/idTypeNoId/component/noId/no_id_text_field.dart';
 import 'package:travelin/view/signUp/component/idTypeNoId/id_type_no_id_error.dart';
 import 'package:travelin/view/signUp/component/idTypeNoId/id_type_no_id_text.dart';
 import 'package:travelin/view/signUp/component/idTypeNoId/id_type_no_id_text_field.dart';
@@ -23,8 +20,6 @@ import 'package:travelin/view/signUp/component/password/password_text_field.dart
 import 'package:travelin/view/signUp/component/registerButton/register_button.dart';
 import 'package:travelin/view/signUp/component/telephone_number/telephone_number_text.dart';
 import 'package:travelin/view/signUp/component/telephone_number/telephone_number_text_field.dart';
-import 'package:travelin/view/signUp/component/idTypeNoId/component/idType/id_type_text.dart';
-import 'package:travelin/view/signUp/component/idTypeNoId/component/idType/id_type_text_field.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({ super.key });
@@ -63,8 +58,6 @@ ValueNotifier isIdNumberFocused = ValueNotifier <bool>(false);
 ValueNotifier isIdNumberError = ValueNotifier <bool>(false);
 
 TextEditingController dateOfBirthController = TextEditingController();
-FocusNode dateOfBirthFocus = FocusNode();
-ValueNotifier isDateOfBirthFocused = ValueNotifier <bool>(false);
 ValueNotifier isDateOfBirthError = ValueNotifier <bool>(false);
 ValueNotifier isDateOfBirthHidden = ValueNotifier(true);
 DateTime? choosedDate;
@@ -115,10 +108,6 @@ void onIdNumberFocusChange() {
   isIdNumberFocused.value = !isIdNumberFocused.value;
 }
 
-void onDateOfBirthFocusChange() {
-  isDateOfBirthFocused.value = !isDateOfBirthFocused.value;
-}
-
 void onPasswordFocusChange() {
   isPasswordSignUpFocused.value = !isPasswordSignUpFocused.value;
 }
@@ -128,7 +117,6 @@ void addSignUpListener() {
   telephoneNumberFocus.addListener(onTelephoneNumberFocusChange);
   emailSignUpFocus.addListener(onEmailSignUpFocusChange);
   idNumberFocus.addListener(onIdNumberFocusChange);
-  dateOfBirthFocus.addListener(onDateOfBirthFocusChange);
   passwordSignUpFocus.addListener(onPasswordFocusChange);
 }
 
@@ -137,8 +125,39 @@ void removeSignUpListener() {
   telephoneNumberFocus.removeListener(onTelephoneNumberFocusChange);
   emailSignUpFocus.removeListener(onEmailSignUpFocusChange);
   idNumberFocus.removeListener(onIdNumberFocusChange);
-  dateOfBirthFocus.removeListener(onDateOfBirthFocusChange);
   passwordSignUpFocus.removeListener(onPasswordFocusChange);
+}
+
+Future <UserCredential> signUp(String email, String password) async {
+  late UserCredential credential;
+  try {
+    credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'weak-password') {
+      debugPrint('The password provided is too weak.');
+    } else if (e.code == 'email-already-in-use') {
+      debugPrint('The account already exists for that email.');
+    }
+  } catch (e) {
+    debugPrint(e.toString());
+  }
+
+  return credential;
+}
+
+Future <void> uploadData(String idUser, String email, String telephoneNumber, String fullName, String idType, String idNumber, String dateOfBirth, String gender) async {
+  await FirebaseFirestore.instance.collection("user").doc(idUser).set({
+    "email": email,
+    "fullName": fullName,
+    "idType": idType,
+    "idNumber": idNumber,
+    "dateOfBirth": dateOfBirth,
+    "telephoneNumber": telephoneNumber,
+    "gender": gender,
+  }, SetOptions(merge: true));
 }
 
 // batas model
@@ -166,9 +185,9 @@ class _SignUpState extends State<SignUp> {
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Container(
-          width: size.width,
           height: size.height,
-          padding: const EdgeInsets.symmetric(
+          width: size.width,
+          margin: const EdgeInsets.symmetric(
             vertical: 30,
             horizontal: 20,
           ),
@@ -260,6 +279,8 @@ class _SignUpState extends State<SignUp> {
               ),
                   
               const RegisterButton(),
+          
+              const Footer(),
             ],
           ),
         ),

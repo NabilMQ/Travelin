@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/view/home/home.dart';
 import 'package:travelin/view/signUp/sign_up.dart';
 
 class RegisterButton extends StatefulWidget {
@@ -43,7 +44,7 @@ class _RegisterButtonState extends State<RegisterButton> {
               foregroundColor: MaterialStatePropertyAll(getOrangeColor),
               overlayColor: MaterialStatePropertyAll(getOrangeColor),
             ),
-            onPressed: () {
+            onPressed: () async {
               bool anyError = false;
 
               if (fullNameController.text == "") {
@@ -66,7 +67,7 @@ class _RegisterButtonState extends State<RegisterButton> {
                 anyError = true;
               }
 
-              if (validateIdNumber(idNumberController.text) || idNumberController.text == "") {
+              if (!validateIdNumber(idNumberController.text) || idNumberController.text == "") {
                 isIdNumberError.value = true;
                 anyError = true;
               }
@@ -84,6 +85,30 @@ class _RegisterButtonState extends State<RegisterButton> {
               if (userGender.value == "") {
                 isUserGenderError.value = true;
                 anyError = true;
+              }
+              if (!anyError) {
+                await signUp(emailSignUpController.text, passwordSignUpController.text).then((value) async {
+                  if (value != null) {
+                    await uploadData(
+                      value.user!.uid,
+                      emailSignUpController.text,
+                      telephoneNumberController.text,
+                      fullNameController.text,
+                      userIdType,
+                      idNumberController.text,
+                      dateOfBirthController.text,
+                      userGender.value,
+                    ).then((value) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const Home();
+                          },
+                        )
+                      );
+                    });
+                  }
+                });
               }
             },
             child: Center(

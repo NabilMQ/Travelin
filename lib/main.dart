@@ -55,10 +55,3 @@ class _MainState extends State<Main> {
     return const GetStarted();
   }
 }
-
-// class _MainState extends State<Main> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return const SignUp();
-//   }
-// }
