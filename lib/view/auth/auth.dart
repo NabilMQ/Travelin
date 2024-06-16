@@ -12,20 +12,6 @@ class Auth extends StatefulWidget {
   State <Auth> createState() => _AuthState();
 }
 
-// update auth controller
-
-void addAuthFormListener() {
-    getEmailFocus.addListener(onEmailFocusChange);
-    getPasswordFocus.addListener(onPasswordFocusChange);
-}
-
-void removeAuthFormListener() {
-    getEmailFocus.removeListener(onEmailFocusChange);
-    getPasswordFocus.removeListener(onPasswordFocusChange);
-}
-
-// batas update
-
 class _AuthState extends State<Auth> {
 
  @override
