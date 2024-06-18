@@ -41,7 +41,7 @@ class _TravelStayContentDescriptionTypeRatingState extends State<TravelStayConte
                   ),
                 ),
 
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
 
                 Expanded(
                   flex: 2,
@@ -63,7 +63,7 @@ class _TravelStayContentDescriptionTypeRatingState extends State<TravelStayConte
 
           Flexible(
             child: Padding(
-              padding: EdgeInsets.all(2),
+              padding: const EdgeInsets.all(2),
               child: Row(
                 children: List.generate(3, (index) {
                   return SvgPicture.asset(

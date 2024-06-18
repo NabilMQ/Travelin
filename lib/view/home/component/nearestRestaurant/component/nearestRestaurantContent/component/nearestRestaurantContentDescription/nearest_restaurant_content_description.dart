@@ -22,7 +22,7 @@ class _NearestRestaurantContentDescriptionState extends State<NearestRestaurantC
       child: Container(
         width: size.width,
         height: size.height,
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           top: 20,
           right: 20,
           bottom: 20,

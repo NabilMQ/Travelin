@@ -3,10 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:travelin/controller/color_controller.dart';
 
 class NearestRestaurantContentDescriptionRating extends StatefulWidget {
-  const NearestRestaurantContentDescriptionRating({ Key? key }) : super(key: key);
+  const NearestRestaurantContentDescriptionRating({ super.key });
 
   @override
-  _NearestRestaurantContentDescriptionRatingState createState() => _NearestRestaurantContentDescriptionRatingState();
+  State <NearestRestaurantContentDescriptionRating> createState() => _NearestRestaurantContentDescriptionRatingState();
 }
 
 class _NearestRestaurantContentDescriptionRatingState extends State<NearestRestaurantContentDescriptionRating> {

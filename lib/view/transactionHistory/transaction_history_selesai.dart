@@ -33,7 +33,7 @@ class MainApp extends StatelessWidget {
 }
 
 class Main extends StatefulWidget {
-  const Main({Key? key}) : super(key: key);
+  const Main({super.key});
 
   @override
   State<Main> createState() => _MainState();
@@ -124,7 +124,7 @@ class _MainState extends State<Main> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
@@ -165,7 +165,7 @@ class _MainState extends State<Main> {
     child: Text.rich(
       TextSpan(
         children: [
-          TextSpan(
+          const TextSpan(
             text: 'Magelang, Jawa Tengah\n',
             style: TextStyle(fontSize: 12),
           ),
@@ -179,7 +179,7 @@ class _MainState extends State<Main> {
                   height: 12,  // Adjust size as needed
                 ),
                 const SizedBox(width: 4),  // Adjust space as needed
-                Text(
+                const Text(
                   '26 Mei 2024 | 4 tiket',
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
@@ -190,7 +190,7 @@ class _MainState extends State<Main> {
       ),
     ),
   ),
-  trailing: Column(
+  trailing: const Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text(
