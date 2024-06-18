@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:travelin/controller/color_controller.dart';
 
 class DetailTravel extends StatefulWidget {
   DetailTravel({Key? key}) : super(key: key);
@@ -37,9 +38,9 @@ class _DetailTravelState extends State<DetailTravel> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: getWhiteColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: getTransparentColor,
         elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +54,7 @@ class _DetailTravelState extends State<DetailTravel> {
             const SizedBox(width: 64), // Beri jarak antara ikon dan teks
             Text(
               "Detail                       ",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+              style: TextStyle(fontSize: 20, fontFamily: getCustomFont, fontWeight: FontWeight.bold, color: Colors.black),
             ),
           ],
         ),
@@ -63,11 +64,11 @@ class _DetailTravelState extends State<DetailTravel> {
         child: Container(
           width: screenWidth * 0.9,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: getWhiteColor,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black12,
+                color: getBlackColor,
                 spreadRadius: 1,
                 blurRadius: 4,
                 offset: Offset(0, 1), // changes position of shadow
@@ -88,7 +89,7 @@ class _DetailTravelState extends State<DetailTravel> {
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black12,
+                                color: getBlackColor,
                                 spreadRadius: 1,
                                 blurRadius: 1,
                                 offset: Offset(0, 1),
@@ -109,7 +110,7 @@ class _DetailTravelState extends State<DetailTravel> {
                             items: imgList.map((item) {
                               return Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.transparent,
+                                  color: getTransparentColor,
                                 ),
                                 child: Image.asset(
                                   item,
@@ -126,7 +127,7 @@ class _DetailTravelState extends State<DetailTravel> {
                           child: Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.white,
+                              color: getWhiteColor,
                             ),
                             padding: EdgeInsets.all(6),
                             child: SvgPicture.asset('assets/icons/Heritage.svg', height: 26, width: 26),
@@ -138,7 +139,7 @@ class _DetailTravelState extends State<DetailTravel> {
                           child: Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.white,
+                              color: getWhiteColor,
                             ),
                             padding: EdgeInsets.all(6),
                             child: SvgPicture.asset('assets/icons/Love Red.svg', height: 26, width: 26),
@@ -162,7 +163,7 @@ class _DetailTravelState extends State<DetailTravel> {
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: _currentIndex == entry.key
-                                        ? Colors.orange // Warna titik saat aktif
+                                        ? getOrangeColor // Warna titik saat aktif
                                         : Color.fromARGB(255, 245, 240, 240), // Warna titik saat tidak aktif
                                   ),
                                 ),
@@ -176,26 +177,26 @@ class _DetailTravelState extends State<DetailTravel> {
                   SizedBox(height: 16),
                   Text(
                     "Candi Borobudur",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontFamily: getCustomFont, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "Magelang, Jawa Tengah",
-                    style: TextStyle(fontSize: 10, color: Colors.black),
+                    style: TextStyle(fontSize: 10, fontFamily: getCustomFont, color: getBlackColor),
                   ),
                   SizedBox(height: 16),
                   Text(
                     "Dinasti Sailendra membangun peninggalan Budha terbesar di dunia antara 780-840 Masehi. Dinasti Sailendra merupakan dinasti yang berkuasa pada masa itu. Peninggalan ini dibangun sebagai tempat pemujaan Budha dan tempat ziarah. Tempat ini berisi petunjuk agar manusia menjauhkan diri dari nafsu dunia dan menuju pencerahan dan kebijaksanaan menurut Budha. Peninggalan ini ditemukan oleh Pasukan Inggris pada tahun 1814 dibawah pimpinan Sir Thomas Stamford Raffles. Area candi berhasil dibersihkan seluruhnya pada tahun 1835.",
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 10, fontFamily: getCustomFont),
                     textAlign: TextAlign.justify,
                   ),
                   SizedBox(height: 16),
                   Text(
                     "Borobudur dibangun dengan gaya Mandala yang mencerminkan alam semesta dalam kepercayaan Budha. Struktur bangunan ini berbentuk kotak dengan empat pintu masuk dan titik pusat berbentuk lingkaran. Jika dilihat dari luar hingga ke dalam terdiri menjadi tiga bagian yaitu alam dunia yang terbagi menjadi tiga zona di bagian luar, dan alam Nirwana di bagian pusat.",
-                    style: TextStyle(fontSize: 10),
+                    style: TextStyle(fontSize: 10, fontFamily: getCustomFont),
                     textAlign: TextAlign.justify,
                   ),
                   SizedBox(height: 16),
-                  Text("Maps", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text("Maps", style: TextStyle(fontSize: 20,fontFamily: getCustomFont, fontWeight: FontWeight.bold)),
                   SizedBox(height: 16),
                   Container(
                     height: 200,
@@ -207,7 +208,7 @@ class _DetailTravelState extends State<DetailTravel> {
                     ),
                   ),
                   SizedBox(height: 16),
-                  Text("Review", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text("Review", style: TextStyle(fontSize: 20, fontFamily: getCustomFont, fontWeight: FontWeight.bold)),
                   SizedBox(height: 16),
                   Container(
                     height: 120,  // Adjusted height
@@ -225,8 +226,8 @@ class _DetailTravelState extends State<DetailTravel> {
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
-                        foregroundColor: Colors.white,
+                        backgroundColor: getOrangeColor,
+                        foregroundColor: getWhiteColor,
                         minimumSize: Size(double.infinity, 48),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
@@ -235,7 +236,7 @@ class _DetailTravelState extends State<DetailTravel> {
                       child: ValueListenableBuilder<String>(
                         valueListenable: _buttonContentNotifier,
                         builder: (context, value, child) {
-                          return Text(value, style: TextStyle(fontSize: 20));
+                          return Text(value, style: TextStyle(fontSize: 20, fontFamily: getCustomFont));
                         },
                       ),
                     ),
@@ -256,12 +257,12 @@ class _DetailTravelState extends State<DetailTravel> {
       margin: EdgeInsets.only(right: 8),
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: getWhiteColor,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.black12.withOpacity(0.3)),
+        border: Border.all(color: getBlackColor.withOpacity(0.3)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black12.withOpacity(0.2),
+            color: getBlackColor.withOpacity(0.2),
             spreadRadius: 1,
             blurRadius: 2,
             offset: Offset(0, 1), // changes position of shadow
@@ -282,15 +283,15 @@ class _DetailTravelState extends State<DetailTravel> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Nama: Sutejo tejo", style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold)),
+                  Text("Nama: Sutejo tejo", style: TextStyle(fontSize: 8, fontFamily: getCustomFont, fontWeight: FontWeight.bold)),
                   Row(
                     children: [
-                      Text("Rating: ", style: TextStyle(fontSize: 8)),
-                      Icon(Icons.star, color: Colors.orange, size: 10),
-                      Icon(Icons.star, color: Colors.orange, size: 10),
-                      Icon(Icons.star, color: Colors.orange, size: 10),
-                      Icon(Icons.star, color: Colors.orange, size: 10),
-                      Icon(Icons.star_border, color: Colors.orange, size: 10),
+                      Text("Rating: ", style: TextStyle(fontSize: 8, fontFamily: getCustomFont)),
+                      Icon(Icons.star, color: getOrangeColor, size: 10),
+                      Icon(Icons.star, color: getOrangeColor, size: 10),
+                      Icon(Icons.star, color: getOrangeColor, size: 10),
+                      Icon(Icons.star, color: getOrangeColor, size: 10),
+                      Icon(Icons.star_border, color: getOrangeColor, size: 10),
                     ],
                   ),
                 ],
@@ -300,7 +301,7 @@ class _DetailTravelState extends State<DetailTravel> {
           SizedBox(height: 8),
           Text(
             "Suka banget sama candi borobudur, udah kesini ga kerasa, candi borobudur megah banget. sangat terawat, dengan suasana yang sejuk. sangat cocok buat healing dan refreshing disini bersama keluarga ataupun sendirian.",
-            style: TextStyle(fontSize: 6),  // Adjusted font size
+            style: TextStyle(fontSize: 6, fontFamily: getCustomFont),  // Adjusted font size
             textAlign: TextAlign.justify,
           ),
         ],
