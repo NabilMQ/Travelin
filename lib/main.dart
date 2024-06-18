@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:travelin/firebase_options.dart';
 import 'package:travelin/view/getStarted/get_started.dart';
-import 'package:travelin/view/paymentMethods/payment_methods.dart';
+
 
 Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
