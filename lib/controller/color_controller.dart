@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/model/custom_style_mode.dart';
+import 'package:travelin/model/custom_style_model.dart';
 
 String get getCustomFont {
   return CustomStyleModel.customFont;

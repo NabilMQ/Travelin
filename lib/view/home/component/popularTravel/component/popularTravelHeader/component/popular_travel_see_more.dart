@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import 'package:travelin/controller/color_controller.dart';
+
+class PopularTravelSeeMore extends StatefulWidget {
+  const PopularTravelSeeMore({ super.key });
+
+  @override
+  State <PopularTravelSeeMore> createState() => _PopularTravelSeeMoreState();
+}
+
+class _PopularTravelSeeMoreState extends State<PopularTravelSeeMore> {
+  @override
+  Widget build(BuildContext context) {
+
+    Size size = MediaQuery.of(context).size;
+
+    return Flexible(
+      child: Container(
+        width: size.width,
+        height: size.height * 0.05,
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              "See More",
+              style: TextStyle(
+                fontSize: 12,
+                fontFamily: getCustomFont,
+                fontWeight: FontWeight.w600,
+                color: getOrangeColor,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
