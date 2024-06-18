@@ -82,3 +82,13 @@ final user = FirebaseAuth.instance.currentUser!;
 Future <void> signUserOut() async {
   await FirebaseAuth.instance.signOut();
 }
+
+void addAuthFormListener() {
+    getEmailFocus.addListener(onEmailFocusChange);
+    getPasswordFocus.addListener(onPasswordFocusChange);
+}
+
+void removeAuthFormListener() {
+    getEmailFocus.removeListener(onEmailFocusChange);
+    getPasswordFocus.removeListener(onPasswordFocusChange);
+}
