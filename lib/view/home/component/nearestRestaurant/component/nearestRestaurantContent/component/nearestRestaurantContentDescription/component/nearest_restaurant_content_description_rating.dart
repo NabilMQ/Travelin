@@ -12,6 +12,9 @@ class NearestRestaurantContentDescriptionRating extends StatefulWidget {
 class _NearestRestaurantContentDescriptionRatingState extends State<NearestRestaurantContentDescriptionRating> {
   @override
   Widget build(BuildContext context) {
+
+    Size size = MediaQuery.of(context).size;
+
     return Expanded(
       flex: 2,
       child: Row(
@@ -37,27 +40,34 @@ class _NearestRestaurantContentDescriptionRatingState extends State<NearestResta
 
           Expanded(
             flex: 2,
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Row(
-                children: List.generate(5, (index) {
-                  if (index < 4) {
-                    return Padding(
+            child: Row(
+              children: List.generate(5, (index) {
+                if (index < 4) {
+                  return Expanded(
+                    flex: 1,
+                    child: Padding(
                       padding: const EdgeInsets.only(left: 2),
                       child: SvgPicture.asset(
-                        "assets/icons/Star Orange.svg"
+                        "assets/icons/Star Orange.svg",
+                        alignment: Alignment.centerLeft,
+                        fit: BoxFit.scaleDown,
                       ),
-                    );
-                  }
-              
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 2),
-                    child: SvgPicture.asset(
-                      "assets/icons/Star Gray.svg"
                     ),
                   );
-                }),
-              ),
+                }
+            
+                return Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 2),
+                    child: SvgPicture.asset(
+                      "assets/icons/Star Gray.svg",
+                      alignment: Alignment.centerLeft,
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
+                );
+              }),
             ),
           )
         ],

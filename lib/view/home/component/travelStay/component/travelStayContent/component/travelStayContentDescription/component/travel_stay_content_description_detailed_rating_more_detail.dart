@@ -18,13 +18,10 @@ class _TravelStayContentDescriptionDetailedRatingMoreDetailState extends State<T
         children: [
           Expanded(
             flex: 1,
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
+            child: SvgPicture.asset(
+              "assets/icons/Logo Icon Orange.svg",
               alignment: Alignment.centerLeft,
-              child: SvgPicture.asset(
-                "assets/icons/Logo Icon Orange.svg",
-                fit: BoxFit.scaleDown,
-              ),
+              fit: BoxFit.scaleDown,
             ),
           ),
 
