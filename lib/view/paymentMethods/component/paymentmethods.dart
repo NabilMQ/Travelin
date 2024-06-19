@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelin/controller/color_controller.dart';
 
 class PaymentMethodSection extends StatefulWidget {
   @override
@@ -68,7 +69,7 @@ class _PaymentMethodSectionState extends State<PaymentMethodSection> {
         ),
         Divider(
           height: 1,
-          color: Colors.grey.shade300,
+          color: getGreyColor,
         ),
       ],
     );
