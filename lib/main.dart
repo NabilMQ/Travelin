@@ -2,12 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:travelin/firebase_options.dart';
+import 'package:travelin/view/auth/auth.dart';
 import 'package:travelin/view/getStarted/get_started.dart';
-import 'package:travelin/view/history/history.dart';
-import 'package:travelin/view/history/review.dart';
-import 'package:travelin/view/history/successReview/sent_review.dart';
-import 'package:travelin/view/history/success_review.dart';
-import 'package:travelin/view/signUp/sign_up.dart';
+import 'package:travelin/view/home/home.dart';
+
 
 Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,3 +57,11 @@ class _MainState extends State<Main> {
     return const History();
   }
 }
+
+
+// class _MainState extends State<Main> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Home();
+//   }
+// }

@@ -88,27 +88,25 @@ class _RegisterButtonState extends State<RegisterButton> {
               }
               if (!anyError) {
                 await signUp(emailSignUpController.text, passwordSignUpController.text).then((value) async {
-                  if (value != null) {
-                    await uploadData(
-                      value.user!.uid,
-                      emailSignUpController.text,
-                      telephoneNumberController.text,
-                      fullNameController.text,
-                      userIdType,
-                      idNumberController.text,
-                      dateOfBirthController.text,
-                      userGender.value,
-                    ).then((value) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const Home();
-                          },
-                        )
-                      );
-                    });
-                  }
-                });
+                  await uploadData(
+                    value.user!.uid,
+                    emailSignUpController.text,
+                    telephoneNumberController.text,
+                    fullNameController.text,
+                    userIdType,
+                    idNumberController.text,
+                    dateOfBirthController.text,
+                    userGender.value,
+                  ).then((value) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const Home();
+                        },
+                      )
+                    );
+                  });
+                                });
               }
             },
             child: Center(
