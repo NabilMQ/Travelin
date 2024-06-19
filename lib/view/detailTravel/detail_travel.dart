@@ -164,7 +164,7 @@ class _DetailTravelState extends State<DetailTravel> {
                                     shape: BoxShape.circle,
                                     color: _currentIndex == entry.key
                                         ? getOrangeColor // Warna titik saat aktif
-                                        : Color.fromARGB(255, 245, 240, 240), // Warna titik saat tidak aktif
+                                        : getGreyColor, // Warna titik saat tidak aktif
                                   ),
                                 ),
                               );
@@ -203,7 +203,7 @@ class _DetailTravelState extends State<DetailTravel> {
                     width: screenWidth * 0.8,
                     child: Center(child: Text("Map Placeholder")),
                     decoration: BoxDecoration(
-                      color: Colors.grey[300],
+                      color: getGreyColor,
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),

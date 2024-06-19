@@ -17,7 +17,7 @@ class MapSection extends StatelessWidget {
           width: screenWidth * 0.8,
           child: Center(child: Text("Map Placeholder")),
           decoration: BoxDecoration(
-            color: Colors.grey[300],
+            color: getGreyColor,
             borderRadius: BorderRadius.circular(8),
           ),
         ),

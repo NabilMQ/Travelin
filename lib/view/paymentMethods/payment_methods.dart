@@ -144,11 +144,11 @@ class _PaymentMethods extends State<Payment> {
       child: Container(
         decoration: BoxDecoration(
           color: getWhiteColor,
-          border: Border.all(color: Colors.grey.shade300),
+          border: Border.all(color: getGreyColor),
           borderRadius: BorderRadius.circular(10.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
+              color: getBlackColor,
               blurRadius: 5,
             ),
           ],
@@ -159,7 +159,7 @@ class _PaymentMethods extends State<Payment> {
             title: Text(
               title,
               style: TextStyle(
-                color: Colors.grey.shade800,
+                color: getGreyColor,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -180,7 +180,7 @@ class _PaymentMethods extends State<Payment> {
         ),
         Divider(
           height: 1,
-          color: Colors.grey.shade300,
+          color: getGreyColor,
         ),
       ],
     );

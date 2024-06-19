@@ -21,34 +21,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-
-    SystemChrome.setEnabledSystemUIMode(
-      SystemUiMode.immersive,
-      overlays: [
-
-      ],
-    );
-
-    SystemChrome.setSystemUIChangeCallback((systemOverlaysAreVisible) async {
-      await Future.delayed(const Duration(seconds: 1));
-      SystemChrome.restoreSystemUIOverlays();
-    });
-
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Main(),
+    return MaterialApp(
+      title: 'Prime Number Checker',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: PrimeCheckerPage(),
     );
   }
 }
 
-class Main extends StatefulWidget {
-  const Main({ super.key });
-
+class PrimeCheckerPage extends StatefulWidget {
   @override
   State <Main> createState() => _MainState();
 }
