@@ -64,6 +64,8 @@ class _HomeState extends State<Home> {
                 const NearestRestaurantHeader(),
                 
                 const NearestRestaurantContent(),
+
+                const SizedBox(height: 94),
               ],
             ),
           ),

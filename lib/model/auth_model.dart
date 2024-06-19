@@ -11,5 +11,4 @@ mixin AuthModel{
   static ValueNotifier isPasswordFocused = ValueNotifier <bool>(false);
   static ValueNotifier isPasswordError = ValueNotifier <bool>(false);
   static ValueNotifier isPasswordHidden = ValueNotifier(true);
-
 }

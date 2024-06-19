@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelin/controller/auth_controller.dart';
 import 'package:travelin/controller/color_controller.dart';
 
 class TextHeader extends StatefulWidget {
@@ -48,14 +49,31 @@ class _TextHeaderState extends State<TextHeader> {
               alignment: Alignment.topLeft,
               child: FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text(
-                  "Nama User",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: getCustomFont,
-                    fontWeight: FontWeight.w600,
-                    color: getBlackColor,
-                  ),
+                child: FutureBuilder(
+                  future: getUserName,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(
+                        snapshot.data.toString(),
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontFamily: getCustomFont,
+                          fontWeight: FontWeight.w600,
+                          color: getBlackColor,
+                        ),
+                      );
+                    }
+
+                    return Text(
+                      "Mengambil data...",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontFamily: getCustomFont,
+                        fontWeight: FontWeight.w600,
+                        color: getBlackColor,
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
