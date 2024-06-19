@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:travelin/firebase_options.dart';
 import 'package:travelin/view/auth/auth.dart';
 import 'package:travelin/view/getStarted/get_started.dart';
+import 'package:travelin/view/history/history.dart';
 import 'package:travelin/view/home/home.dart';
 
 
