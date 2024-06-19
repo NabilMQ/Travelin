@@ -27,7 +27,7 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
           const SizedBox(width: 64), // Beri jarak antara ikon dan teks
           Text(
             "Detail                       ",
-            style: TextStyle(fontSize: 20, fontFamily: getCustomFont, fontWeight: FontWeight.bold, color: Colors.black),
+            style: TextStyle(fontSize: 20, fontFamily: getCustomFont, fontWeight: FontWeight.bold, color: getBlackColor),
           ),
         ],
       ),

@@ -100,7 +100,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
                       shape: BoxShape.circle,
                       color: _currentIndex == entry.key
                           ? getOrangeColor
-                          : Color.fromARGB(255, 245, 240, 240),
+                          : getGreyColor,
                     ),
                   ),
                 );

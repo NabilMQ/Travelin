@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:travelin/firebase_options.dart';
 import 'package:travelin/view/getStarted/get_started.dart';
 
-
 Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
