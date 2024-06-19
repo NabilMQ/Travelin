@@ -6,7 +6,9 @@ import 'package:travelin/view/home/component/popularTravel/component/popularTrav
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/component/popularTravelContentDescription/component/popular_travel_content_description_price.dart';
 
 class PopularTravelContentDescription extends StatefulWidget {
-  const PopularTravelContentDescription({ super.key });
+  const PopularTravelContentDescription({ super.key, required this.index });
+
+  final int index;
 
   @override
   State <PopularTravelContentDescription> createState() => _PopularTravelContentDescriptionState();
@@ -28,17 +30,17 @@ class _PopularTravelContentDescriptionState extends State<PopularTravelContentDe
             color: getWhiteColor,
             borderRadius: BorderRadius.circular(5),
           ),
-          child: const Column(
+          child: Column(
             children: [
               Expanded(
                 flex: 4,
                 child: Row(
                   children: [
-                    PopularTravelContentDescriptionName(),
+                    PopularTravelContentDescriptionName(index: widget.index),
 
                     SizedBox(width: 10),
 
-                    PopularTravelContentDescriptionPrice(),
+                    PopularTravelContentDescriptionPrice(index: widget.index),
                   ],
                 ),
               ),
@@ -47,11 +49,11 @@ class _PopularTravelContentDescriptionState extends State<PopularTravelContentDe
                 flex: 6,
                 child: Row(
                   children: [
-                    PopularTravelContentDescriptionDetail(),
+                    PopularTravelContentDescriptionDetail(index: widget.index),
 
                     SizedBox(width: 10),
                     
-                    PopularTravelContentDescriptionButton(),
+                    PopularTravelContentDescriptionButton(index: widget.index),
                   ],
                 ),
               ),

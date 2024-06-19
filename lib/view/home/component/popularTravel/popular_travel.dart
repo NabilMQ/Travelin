@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:travelin/controller/travel_controller.dart';
+import 'package:travelin/model/travel_model.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/popular_travel_content.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelHeader/popular_travel_header.dart';
 
@@ -19,12 +22,22 @@ class _PopularTravelState extends State<PopularTravel> {
       width: size.width,
       height: 270,
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: const Column(
-        children: [
-          PopularTravelHeader(),
-          
-          PopularTravelContent(),
-        ],
+      child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: TravelModel.travelStreamData,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            processsTravelData(snapshot);
+            return Column(
+              children: [
+                PopularTravelHeader(),
+                
+                PopularTravelContent(),
+              ],
+            );
+          }
+
+          return SizedBox.shrink();
+        }
       ),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:travelin/controller/color_controller.dart';
 
 class PopularTravelContentIconFavorite extends StatefulWidget {
   const PopularTravelContentIconFavorite({ super.key });
@@ -10,13 +12,21 @@ class PopularTravelContentIconFavorite extends StatefulWidget {
 class _PopularTravelContentIconFavoriteState extends State<PopularTravelContentIconFavorite> {
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: Align(
         alignment: Alignment.topRight ,
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Icon(
-            Icons.abc,
+        child: Container(
+          width: 30,
+          height: 30,
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: getWhiteColor,
+            borderRadius: BorderRadius.circular(100)
+          ),
+          child: SvgPicture.asset(
+            "assets/icons/Love Red.svg",
+            colorFilter: ColorFilter.mode(getGreyColor, BlendMode.srcIn),
+            fit: BoxFit.scaleDown,
           ),
         ),
       ),

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:travelin/controller/color_controller.dart';
 
 class PopularTravelContentDescriptionButton extends StatefulWidget {
-  const PopularTravelContentDescriptionButton({ super.key });
+  const PopularTravelContentDescriptionButton({ super.key, required this.index });
 
+  final int index;
+  
   @override
   State <PopularTravelContentDescriptionButton> createState() => _PopularTravelContentDescriptionButtonState();
 }

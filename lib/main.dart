@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:travelin/firebase_options.dart';
+import 'package:travelin/view/auth/auth.dart';
+import 'package:travelin/view/getStarted/get_started.dart';
 import 'package:travelin/view/home/home.dart';
 
 Future <void> main() async {
@@ -48,17 +50,17 @@ class Main extends StatefulWidget {
   State <Main> createState() => _MainState();
 }
 
-// class _MainState extends State<Main> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return const GetStarted();
-//   }
-// }
-
-
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
-    return const Home();
+    return const Auth();
   }
 }
+
+
+// class _MainState extends State<Main> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Home();
+//   }
+// }

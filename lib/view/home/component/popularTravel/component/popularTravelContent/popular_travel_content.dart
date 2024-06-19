@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/travel_controller.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/component/popularTravelContentDescription/popular_travel_content_description.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/component/popularTravelContentIcon/popular_travel_content_icon.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/component/popularTravelContentImage/popular_travel_content_image.dart';
@@ -27,11 +28,11 @@ class _PopularTravelContentState extends State<PopularTravelContent> {
         ),
         padding: const EdgeInsets.all(5),
         child: Row(
-          children: List.generate(5, (index) {
+          children: List.generate(3, (index) {
             return Container(
               width: size.width * 0.75  ,
               height: 200,
-              margin: index == 4 ? EdgeInsets.zero : const EdgeInsets.only(right: 10),
+              margin: index == 3 - 1 ? EdgeInsets.zero : const EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
                 color: getWhiteColor,
                 borderRadius: BorderRadius.circular(10),
@@ -45,17 +46,17 @@ class _PopularTravelContentState extends State<PopularTravelContent> {
               ),
               child: Stack(
                 children: [
-                  const PopularTravelContentImage(),
+                  PopularTravelContentImage(index: index),
 
                   Container(
                     width: size.width,
                     height: size.height,
                     padding: const EdgeInsets.all(20),
-                    child: const Column(
+                    child: Column(
                       children: [
-                        PopularTravelContentIcon(),
+                        PopularTravelContentIcon(index: index),
 
-                        PopularTravelContentDescription(),
+                        PopularTravelContentDescription(index: index),
                       ],
                     ),
                   ),

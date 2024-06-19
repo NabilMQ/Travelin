@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/travel_controller.dart';
 
 class PopularTravelContentDescriptionPrice extends StatefulWidget {
-  const PopularTravelContentDescriptionPrice  ({ super.key });
+  const PopularTravelContentDescriptionPrice  ({
+    super.key, 
+    required this.index 
+  });
 
+  final int index;
+  
   @override
   State <PopularTravelContentDescriptionPrice> createState() => _PopularTravelContentDescriptionPriceState();
 }
@@ -18,7 +24,7 @@ class _PopularTravelContentDescriptionPriceState extends State<PopularTravelCont
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            "Rp. 100.000",
+            "Rp ${getTravelDataPrice(widget.index)}",
             style: TextStyle(
               fontSize: 12,
               fontFamily: getCustomFont,

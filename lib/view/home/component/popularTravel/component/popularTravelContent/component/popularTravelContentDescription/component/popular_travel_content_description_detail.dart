@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/travel_controller.dart';
 
 class PopularTravelContentDescriptionDetail extends StatefulWidget {
-  const PopularTravelContentDescriptionDetail({ super.key });
+  const PopularTravelContentDescriptionDetail({
+    super.key,
+    required this.index
+  });
 
+  final int index;
+  
   @override
   State <PopularTravelContentDescriptionDetail> createState() => _PopularTravelContentDescriptionDetailState();
 }
@@ -16,7 +22,7 @@ class _PopularTravelContentDescriptionDetailState extends State<PopularTravelCon
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
-          "Aset berharga UNESCO yang ada di Magelang",
+          getTravelDataDescriptionDetail(widget.index),
           maxLines: 2,
           style: TextStyle(
             fontSize: 8,
