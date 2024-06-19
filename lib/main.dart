@@ -1,4 +1,3 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,17 +20,34 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Prime Number Checker',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: PrimeCheckerPage(),
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.immersive,
+      overlays: [
+
+      ],
+    );
+
+    SystemChrome.setSystemUIChangeCallback((systemOverlaysAreVisible) async {
+      await Future.delayed(const Duration(seconds: 1));
+      SystemChrome.restoreSystemUIOverlays();
+    });
+
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Main(),
     );
   }
 }
 
-class PrimeCheckerPage extends StatefulWidget {
+class Main extends StatefulWidget {
+  const Main({ super.key });
+
   @override
   State <Main> createState() => _MainState();
 }
