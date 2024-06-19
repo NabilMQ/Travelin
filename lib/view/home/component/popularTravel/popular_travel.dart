@@ -27,7 +27,7 @@ class _PopularTravelState extends State<PopularTravel> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             processsTravelData(snapshot);
-            return Column(
+            return const Column(
               children: [
                 PopularTravelHeader(),
                 
@@ -36,7 +36,10 @@ class _PopularTravelState extends State<PopularTravel> {
             );
           }
 
-          return SizedBox.shrink();
+          return const FittedBox(
+            fit: BoxFit.scaleDown,
+            child: CircularProgressIndicator(),
+          );
         }
       ),
     );

@@ -22,23 +22,26 @@ class _PopularTravelContentImageState extends State<PopularTravelContentImage> {
     return SizedBox(
       width: size.width,
       height: size.height,
-      child: FittedBox(
-        fit: BoxFit.fill,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: FutureBuilder(
-            future: getTravelDataMainImage(widget.index),
-            builder:(context, snapshot) {
-              if (snapshot.hasData) {
-                return Image.network(
+      child: FutureBuilder(
+        future: getTravelDataMainImage(widget.index),
+        builder:(context, snapshot) {
+          if (snapshot.hasData) { 
+            return FittedBox(
+              fit: BoxFit.fill,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
                   snapshot.data.toString(),
-                );
-              }
-
-              return SizedBox.shrink();
-            },
-          )
-        ),
+                ),
+              ),
+            );
+          }
+            
+          return const FittedBox(
+            fit: BoxFit.scaleDown,
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }

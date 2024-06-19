@@ -38,7 +38,7 @@ class _PopularTravelContentDescriptionState extends State<PopularTravelContentDe
                   children: [
                     PopularTravelContentDescriptionName(index: widget.index),
 
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
 
                     PopularTravelContentDescriptionPrice(index: widget.index),
                   ],
@@ -51,7 +51,7 @@ class _PopularTravelContentDescriptionState extends State<PopularTravelContentDe
                   children: [
                     PopularTravelContentDescriptionDetail(index: widget.index),
 
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     
                     PopularTravelContentDescriptionButton(index: widget.index),
                   ],
