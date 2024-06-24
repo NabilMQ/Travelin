@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
+import 'package:travelin/controller/nearest_restaurant_controller.dart';
 import 'package:travelin/view/home/component/nearestRestaurant/component/nearestRestaurantContent/component/nearestRestaurantContentDescription/nearest_restaurant_content_description.dart';
 import 'package:travelin/view/home/component/nearestRestaurant/component/nearestRestaurantContent/component/nearestRestaurantContentImage/nearest_restaurant_content_image.dart';
 
@@ -19,31 +20,45 @@ class _NearestRestaurantContentState extends State<NearestRestaurantContent> {
     return Container(
       width: size.width,
       padding: const EdgeInsets.symmetric(horizontal: 25),
-      child: Column(
-        children: List.generate(3, (index) {
-          return Container(
-            width: size.width,
-            height: 110,
-            margin: const EdgeInsets.only(bottom: 25),
-            decoration: BoxDecoration(
-              color: getWhiteColor,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 4,
-                  color: getBlackColor.withOpacity(0.25),
-                ),  
-              ],
-            ),
-            child: const Row(
-              children: [
-                  NearestRestaurantContentImage(),
+      child: StreamBuilder(
+        stream: getNearestRestaurantStreamData,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            processsNearestRestaurantData(snapshot);
+            return Column(
+              children: List.generate(getNearestRestaurantDataLength, (index) {
+                return Container(
+                  width: size.width,
+                  height: 110,
+                  margin: const EdgeInsets.only(bottom: 25),
+                  decoration: BoxDecoration(
+                    color: getWhiteColor,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: getBlackColor.withOpacity(0.25),
+                      ),  
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                        NearestRestaurantContentImage(index: index),
+            
+                        NearestRestaurantContentDescription(index: index),
+                    ],
+                  ),
+                );
+              }),
+            );
+          }
 
-                  NearestRestaurantContentDescription(),
-              ],
-            ),
+          return const FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.center,
+            child: CircularProgressIndicator(),
           );
-        }),
+        }
       ),
     );
   }

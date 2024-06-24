@@ -6,7 +6,12 @@ import 'package:travelin/view/home/component/nearestRestaurant/component/nearest
 import 'package:travelin/view/home/component/nearestRestaurant/component/nearestRestaurantContent/component/nearestRestaurantContentDescription/component/nearest_restaurant_content_description_rating.dart';
 
 class NearestRestaurantContentDescription extends StatefulWidget {
-  const NearestRestaurantContentDescription({ super.key });
+  const NearestRestaurantContentDescription({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   State <NearestRestaurantContentDescription> createState() => _NearestRestaurantContentDescriptionState();
@@ -27,21 +32,21 @@ class _NearestRestaurantContentDescriptionState extends State<NearestRestaurantC
           right: 20,
           bottom: 20,
         ),
-        child: const Column(
+        child: Column(
           children: [
-            NearestRestaurantContentDescriptionName(),
+            NearestRestaurantContentDescriptionName(index: widget.index,),
 
-            NearestRestaurantContentDescriptionLocation(),
+            NearestRestaurantContentDescriptionLocation(index: widget.index),
 
-            NearestRestaurantContentDescriptionDetailLocation(),
+            NearestRestaurantContentDescriptionDetailLocation(index: widget.index),
 
             Expanded(
               flex: 4,
               child: Row(
                 children: [
-                  NearestRestaurantContentDescriptionRating(),
+                  NearestRestaurantContentDescriptionRating(index: widget.index),
 
-                  NearestRestaurantContentDescriptionInformation(),
+                  NearestRestaurantContentDescriptionInformation(index: widget.index),
                 ],
               )
             ),

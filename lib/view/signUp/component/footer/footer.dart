@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 
 class Footer extends StatefulWidget {
   const Footer({ super.key });

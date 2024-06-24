@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-mixin AuthModel{
+mixin AuthModel {
   static TextEditingController emailController = TextEditingController();
   static FocusNode emailFocus = FocusNode();
   static ValueNotifier isEmailFocused = ValueNotifier <bool>(false);

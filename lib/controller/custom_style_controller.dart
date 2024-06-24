@@ -28,3 +28,11 @@ Color get getTransparentColor {
 Color get getRedColor {
   return CustomStyleModel.redColor;
 }
+
+Color get getHomePageBackgroundColor {
+  return CustomStyleModel.homePageBackgroundColor;
+}
+
+Color get getBrighterOrange {
+  return CustomStyleModel.brighterOrange;
+}

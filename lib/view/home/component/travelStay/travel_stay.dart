@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
+import 'package:travelin/controller/travel_stay_controller.dart';
 import 'package:travelin/view/home/component/travelStay/component/travelStayContent/travel_stay_content.dart';
 import 'package:travelin/view/home/component/travelStay/component/travelStayHeader/travel_stay_header.dart';
 
@@ -19,11 +21,26 @@ class _TravelStayState extends State<TravelStay> {
       width: size.width,
       height: 300,
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: const Column(
+      child: Column(
         children: [
-          TravelStayHeader(),
-
-          TravelStayContent()
+          const TravelStayHeader(),
+          
+          StreamBuilder(
+            stream: getTravelStayStreamData,
+            builder:(context, snapshot) {
+              if (snapshot.hasData) {
+                processsTravelStayData(snapshot);
+                return const TravelStayContent();
+              }
+          
+              return const Expanded(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
+import 'package:travelin/controller/travel_type_controller.dart';
 
 class TravelCategoryContent extends StatefulWidget {
   const TravelCategoryContent({ super.key });
@@ -24,40 +26,40 @@ class _TravelCategoryContentState extends State<TravelCategoryContent> {
               height: 50,
               padding: const EdgeInsets.all(5),
               child: Row(
-                children: List.generate(5, (index) {
+                children: List.generate(getTravelTypeLength, (index) {
                   return Container(
                     width: size.width * 0.3,
                     height: 50,
-                    margin: index == 4 ? EdgeInsets.zero : const EdgeInsets.only(right: 10),
+                    margin: index == 3 ? EdgeInsets.zero : const EdgeInsets.only(right: 10),
                     decoration: BoxDecoration(
                       color: getWhiteColor,
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
                           color: getBlackColor.withOpacity(0.25),
-                          blurRadius: 4,
-                          offset: const Offset(0, 4),
+                          blurRadius: 5,
                         ),
                       ],
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(width: 10),
                       
-                        const Icon(
-                          Icons.abc,
+                        SvgPicture.asset(
+                          getTravelType.keys.elementAt(index),
                         ),
                       
                         const SizedBox(width: 5),
                       
-                        Expanded(
+                        Flexible(
                           flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                "Mountain",
+                                getTravelType.values.elementAt(index),
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontFamily: getCustomFont,

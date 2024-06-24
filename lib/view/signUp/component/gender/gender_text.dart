@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 
 class GenderText extends StatefulWidget {
   const GenderText({ super.key });

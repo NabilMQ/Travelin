@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/auth_controller.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 
 class EmailTextField extends StatefulWidget {
   const EmailTextField({ super.key });

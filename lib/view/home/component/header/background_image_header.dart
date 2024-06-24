@@ -10,10 +10,16 @@ class BackgroundImageHeader extends StatefulWidget {
 class _BackgroundImageHeaderState extends State<BackgroundImageHeader> {
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: Image.asset(
-        "assets/images/Background Homepage.png",
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        image: const DecorationImage(
+          fit: BoxFit.fitWidth,
+          alignment: FractionalOffset.center,
+          image: AssetImage(
+            "assets/images/Background Homepage.png",
+          ),
+        ),
       ),
     );
   }

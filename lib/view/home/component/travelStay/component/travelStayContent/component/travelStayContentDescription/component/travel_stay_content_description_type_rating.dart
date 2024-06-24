@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:travelin/controller/color_controller.dart';
-import 'package:travelin/view/home/home.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
+import 'package:travelin/controller/travel_stay_controller.dart';
 
 class TravelStayContentDescriptionTypeRating extends StatefulWidget {
-  const TravelStayContentDescriptionTypeRating({ super.key });
+  const TravelStayContentDescriptionTypeRating({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   State <TravelStayContentDescriptionTypeRating> createState() => _TravelStayContentDescriptionTypeRatingState();
@@ -25,18 +30,18 @@ class _TravelStayContentDescriptionTypeRatingState extends State<TravelStayConte
             width: size.width * 0.14,
             padding: const EdgeInsets.all(2.5),
             decoration: BoxDecoration(
-              color: brighterOrange,
+              color: getBrighterOrange,
               borderRadius: BorderRadius.circular(3),
             ),
             child: Row(
               children: [
                 Expanded(
                   flex: 1,
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Icon(
-                      Icons.hotel,
-                      color: getOrangeColor,
+                  child: SizedBox.expand(
+                    child: SvgPicture.asset(
+                      "assets/icons/Hotel.svg",
+                      alignment: Alignment.centerLeft,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -46,7 +51,7 @@ class _TravelStayContentDescriptionTypeRatingState extends State<TravelStayConte
                 Expanded(
                   flex: 2,
                   child: Text(
-                    "Hotel",
+                    getTravelStayDataType(widget.index),
                     style: TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.w500,
@@ -65,9 +70,15 @@ class _TravelStayContentDescriptionTypeRatingState extends State<TravelStayConte
             child: Padding(
               padding: const EdgeInsets.all(2),
               child: Row(
-                children: List.generate(3, (index) {
-                  return SvgPicture.asset(
-                    "assets/icons/Star Orange.svg",
+                children: List.generate(getTravelStayDataRating(widget.index), (index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 4,
+                      horizontal: 0,
+                    ),
+                    child: SvgPicture.asset(
+                      "assets/icons/Star Orange.svg",
+                    ),
                   );
                 }),
               ),

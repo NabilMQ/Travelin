@@ -22,25 +22,28 @@ class _PopularTravelState extends State<PopularTravel> {
       width: size.width,
       height: 270,
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-        stream: TravelModel.travelStreamData,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            processsTravelData(snapshot);
-            return const Column(
-              children: [
-                PopularTravelHeader(),
-                
-                PopularTravelContent(),
-              ],
-            );
-          }
+      child: Column(
+        children: [
+          const PopularTravelHeader(),
 
-          return const FittedBox(
-            fit: BoxFit.scaleDown,
-            child: CircularProgressIndicator(),
-          );
-        }
+          StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+            stream: TravelModel.travelStreamData,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                processsTravelData(snapshot);
+                return const PopularTravelContent();
+              }
+          
+              return const Expanded(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.center,
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          ),
+        ],
       ),
     );
   }

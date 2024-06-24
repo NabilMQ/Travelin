@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
+import 'package:travelin/controller/nearest_restaurant_controller.dart';
 
 class NearestRestaurantContentDescriptionLocation extends StatefulWidget {
-  const NearestRestaurantContentDescriptionLocation({ super.key });
+  const NearestRestaurantContentDescriptionLocation({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   State <NearestRestaurantContentDescriptionLocation> createState() => _NearestRestaurantContentDescriptionLocationState();
@@ -18,7 +24,7 @@ class _NearestRestaurantContentDescriptionLocationState extends State<NearestRes
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            "JL. Gajah Mada No. 10",
+            getNearestRestaurantDataAddress(widget.index),
             style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w500,

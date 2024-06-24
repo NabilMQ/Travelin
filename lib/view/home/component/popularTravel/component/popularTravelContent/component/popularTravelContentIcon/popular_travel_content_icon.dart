@@ -22,7 +22,7 @@ class _PopularTravelContentIconState extends State<PopularTravelContentIcon> {
         children: [
           PopularTravelContentIconCategory(index: widget.index),
       
-          const PopularTravelContentIconFavorite(),
+          PopularTravelContentIconFavorite(index: widget.index),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/view/customBotNavBar/component/custom_bot_nav_bar_item.dart';
 
 class CustomBotNavBar extends StatefulWidget {

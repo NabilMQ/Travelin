@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/controller/travel_controller.dart';
+import 'package:travelin/controller/travel_type_controller.dart';
 
 class PopularTravelContentIconCategory extends StatefulWidget {
   const PopularTravelContentIconCategory({
@@ -30,7 +31,8 @@ class _PopularTravelContentIconCategoryState extends State<PopularTravelContentI
             borderRadius: BorderRadius.circular(100)
           ),
           child: SvgPicture.asset(
-            "assets/icons/${getTravelDataType(widget.index)}.svg",
+            // "assets/icons/${getTravelDataType(widget.index)}.svg",
+            getTravelType.entries.firstWhere((element) => element.value == getTravelDataType(widget.index)).key.toString(),
             fit: BoxFit.scaleDown,
           ),
         ),

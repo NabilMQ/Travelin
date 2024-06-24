@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/view/customBotNavBar/custom_bot_nav_bar.dart';
 import 'package:travelin/view/home/component/nearestRestaurant/component/nearestRestaurantContent/nearest_restaurant_content.dart';
 import 'package:travelin/view/home/component/nearestRestaurant/component/nearestRestaurantHeader/nearest_restaurant_header.dart';
@@ -18,10 +18,6 @@ class Home extends StatefulWidget {
   @override
   State <Home> createState() => _HomeState();
 }
-// update custom style model
-Color homePageBackgroundColor = const Color.fromRGBO(249, 205, 144, 1);
-Color brighterOrange = const Color.fromRGBO(255, 242, 224, 1);
-// batas model
 
 class _HomeState extends State<Home> {
   @override

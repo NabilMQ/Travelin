@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 
 class PopularTravelMainHeader extends StatefulWidget {
   const PopularTravelMainHeader({ super.key });
@@ -15,6 +15,7 @@ class _PopularTravelMainHeaderState extends State<PopularTravelMainHeader> {
     Size size = MediaQuery.of(context).size;
 
     return Flexible(
+      flex: 3,
       child: Container(
         width: size.width,
         height: size.height * 0.05,

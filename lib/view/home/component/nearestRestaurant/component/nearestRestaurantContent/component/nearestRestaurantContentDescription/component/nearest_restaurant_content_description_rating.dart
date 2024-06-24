@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
+import 'package:travelin/controller/nearest_restaurant_controller.dart';
 
 class NearestRestaurantContentDescriptionRating extends StatefulWidget {
-  const NearestRestaurantContentDescriptionRating({ super.key });
+  const NearestRestaurantContentDescriptionRating({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   State <NearestRestaurantContentDescriptionRating> createState() => _NearestRestaurantContentDescriptionRatingState();
@@ -13,7 +19,6 @@ class _NearestRestaurantContentDescriptionRatingState extends State<NearestResta
   @override
   Widget build(BuildContext context) {
 
-    Size size = MediaQuery.of(context).size;
 
     return Expanded(
       flex: 2,
@@ -42,7 +47,7 @@ class _NearestRestaurantContentDescriptionRatingState extends State<NearestResta
             flex: 2,
             child: Row(
               children: List.generate(5, (index) {
-                if (index < 4) {
+                if (index < getNearestRestaurantDataRating(widget.index)) {
                   return Expanded(
                     flex: 1,
                     child: Padding(

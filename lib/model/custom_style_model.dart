@@ -7,6 +7,8 @@ mixin CustomStyleModel {
   static Color whiteColor = Colors.white;
   static Color transparentColor = Colors.transparent;
   static Color redColor = const Color.fromRGBO(251, 39, 66, 1);
+  static Color homePageBackgroundColor = const Color.fromRGBO(249, 205, 144, 1);
+  static Color brighterOrange = const Color.fromRGBO(255, 242, 224, 1);
 
   static String customFont = "Poppins";
 }

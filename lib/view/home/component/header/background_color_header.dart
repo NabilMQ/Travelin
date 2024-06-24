@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/view/home/home.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 
 class BackgroundColorHeader extends StatefulWidget {
   const BackgroundColorHeader({ super.key });
@@ -17,7 +17,7 @@ class _BackgroundColorHeaderState extends State<BackgroundColorHeader> {
     return Container(
       width: size.width,
       height: size.height,
-      color: homePageBackgroundColor,
+      color: getHomePageBackgroundColor,
     );
   }
 }

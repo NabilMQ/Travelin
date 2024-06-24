@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:travelin/model/auth_model.dart';
 
@@ -56,12 +55,33 @@ void onPasswordFocusChange() {
   getIsPasswordFocused.value = !getIsPasswordFocused.value;
 }
 
+// Future <void> signUserIn(String email, String password) async {
+//   // try sign in 
+//   try {
+//     await FirebaseAuth.instance.signInWithEmailAndPassword(
+//       email: email,
+//       password: password,
+//     );
+//   } on FirebaseAuthException catch (e) {
+//     // WRONG EMAIL
+//     if (e.code == 'user-not-found') {
+//       // show error to user
+//       // showErrorDialog('User not found');
+//     } 
+//     // WRONG PASSWORD
+//     else if (e.code == 'wrong-password') {
+//       // show error to user
+//       // showErrorDialog('Wrong password');
+//     }
+//   }
+// }
+
 Future <void> signUserIn(String email, String password) async {
   // try sign in 
   try {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: email,
-      password: password,
+      email: "testtest@gmail.com",
+      password: "abcdefgh",
     );
   } on FirebaseAuthException catch (e) {
     // WRONG EMAIL

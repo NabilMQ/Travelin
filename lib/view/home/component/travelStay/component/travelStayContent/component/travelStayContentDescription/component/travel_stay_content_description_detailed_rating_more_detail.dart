@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
+import 'package:travelin/controller/travel_stay_controller.dart';
 
 class TravelStayContentDescriptionDetailedRatingMoreDetail extends StatefulWidget {
-  const TravelStayContentDescriptionDetailedRatingMoreDetail({ super.key });
+  const TravelStayContentDescriptionDetailedRatingMoreDetail({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   State <TravelStayContentDescriptionDetailedRatingMoreDetail> createState() => _TravelStayContentDescriptionDetailedRatingMoreDetailState();
@@ -18,10 +24,15 @@ class _TravelStayContentDescriptionDetailedRatingMoreDetailState extends State<T
         children: [
           Expanded(
             flex: 1,
-            child: SvgPicture.asset(
-              "assets/icons/Logo Icon Orange.svg",
-              alignment: Alignment.centerLeft,
-              fit: BoxFit.scaleDown,
+            child: SizedBox.expand(
+              child: Padding(
+                padding: const EdgeInsets.all(2),
+                child: SvgPicture.asset(
+                  "assets/icons/Logo Icon Orange.svg",
+                  alignment: Alignment.centerLeft,
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
           ),
 
@@ -34,7 +45,7 @@ class _TravelStayContentDescriptionDetailedRatingMoreDetailState extends State<T
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "3,85 ",
+                      text: "${getTravelStayDataRating(widget.index)}/5 ",
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
@@ -64,7 +75,7 @@ class _TravelStayContentDescriptionDetailedRatingMoreDetailState extends State<T
               fit: BoxFit.scaleDown,
               alignment: Alignment.centerRight,
               child: Text(
-                "/kamar/malam",
+                getTravelStayDataType(widget.index) == "Hotel" ? "/kamar/malam" : "/malam",
                 style: TextStyle(
                   fontSize: 8,
                   fontWeight: FontWeight.w600,

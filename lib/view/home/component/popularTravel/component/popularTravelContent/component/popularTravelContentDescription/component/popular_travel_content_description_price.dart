@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/controller/travel_controller.dart';
+import 'package:intl/intl.dart';
 
 class PopularTravelContentDescriptionPrice extends StatefulWidget {
   const PopularTravelContentDescriptionPrice  ({
@@ -24,7 +25,11 @@ class _PopularTravelContentDescriptionPriceState extends State<PopularTravelCont
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            "Rp ${getTravelDataPrice(widget.index)}",
+            NumberFormat.currency(
+              locale: 'id',
+              symbol: 'Rp ',
+              decimalDigits: 0,
+            ).format(int.parse(getTravelDataPrice(widget.index))),
             style: TextStyle(
               fontSize: 12,
               fontFamily: getCustomFont,

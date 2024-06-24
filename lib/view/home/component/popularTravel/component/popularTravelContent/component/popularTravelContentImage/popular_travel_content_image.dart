@@ -39,6 +39,7 @@ class _PopularTravelContentImageState extends State<PopularTravelContentImage> {
             
           return const FittedBox(
             fit: BoxFit.scaleDown,
+            alignment: Alignment.center,
             child: CircularProgressIndicator(),
           );
         },

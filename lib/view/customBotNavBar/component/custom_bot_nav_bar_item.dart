@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/view/customBotNavBar/custom_bot_nav_bar.dart';
 
 class CustomBotNavBarItem extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/controller/get_started_controller.dart';
 import 'package:travelin/view/getStarted/component/swipePage/swipe_page.dart';
 

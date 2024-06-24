@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
+import 'package:travelin/controller/travel_stay_controller.dart';
 
 class TravelStayContentDescriptionLocationPrice extends StatefulWidget {
-  const TravelStayContentDescriptionLocationPrice({ super.key });
+  const TravelStayContentDescriptionLocationPrice({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   State <TravelStayContentDescriptionLocationPrice> createState() => _TravelStayContentDescriptionLocationPriceState();
@@ -17,12 +25,18 @@ class _TravelStayContentDescriptionLocationPriceState extends State<TravelStayCo
         children: [
           Expanded(
             flex: 1,
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              alignment: Alignment.centerLeft,
-              child: Icon(
-                Icons.pin_drop,
-                color: getGreyColor,
+            child: SizedBox.expand(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 5,
+                  right: 5,
+                  bottom: 5,
+                ),
+                child: SvgPicture.asset(
+                  "assets/icons/Pointer.svg",
+                  alignment: Alignment.centerLeft,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),
@@ -50,7 +64,11 @@ class _TravelStayContentDescriptionLocationPriceState extends State<TravelStayCo
               fit: BoxFit.scaleDown,
               alignment: Alignment.centerRight,
               child: Text(
-                "Rp. 305.000",
+                NumberFormat.currency(
+                  locale: 'id',
+                  symbol: 'Rp ',
+                  decimalDigits: 0,
+                ).format(getTravelStayDataPrice(widget.index)),
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,

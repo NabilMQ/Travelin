@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelin/controller/color_controller.dart';
+import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/component/popularTravelContentDescription/component/popular_travel_content_description_button.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/component/popularTravelContentDescription/component/popular_travel_content_description_detail.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/component/popularTravelContentDescription/component/popular_travel_content_description_name.dart';

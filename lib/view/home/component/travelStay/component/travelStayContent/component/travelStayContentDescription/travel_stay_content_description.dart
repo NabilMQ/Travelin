@@ -5,7 +5,12 @@ import 'package:travelin/view/home/component/travelStay/component/travelStayCont
 import 'package:travelin/view/home/component/travelStay/component/travelStayContent/component/travelStayContentDescription/component/travel_stay_content_description_type_rating.dart';
 
 class TravelStayContentDescription extends StatefulWidget {
-  const TravelStayContentDescription({ super.key });
+  const TravelStayContentDescription({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   State <TravelStayContentDescription> createState() => _TravelStayContentDescriptionState();
@@ -14,7 +19,7 @@ class TravelStayContentDescription extends StatefulWidget {
 class _TravelStayContentDescriptionState extends State<TravelStayContentDescription> {
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       flex: 3,
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -23,13 +28,13 @@ class _TravelStayContentDescriptionState extends State<TravelStayContentDescript
         ),
         child: Column(
           children: [
-            TravelStayContentDescriptionName(),
+            TravelStayContentDescriptionName(index: widget.index),
         
-            TravelStayContentDescriptionTypeRating(),
+            TravelStayContentDescriptionTypeRating(index: widget.index,),
         
-            TravelStayContentDescriptionLocationPrice(),
+            TravelStayContentDescriptionLocationPrice(index: widget.index),
         
-            TravelStayContentDescriptionDetailedRatingMoreDetail(),
+            TravelStayContentDescriptionDetailedRatingMoreDetail(index: widget.index,),
           ],
         ),
       )
