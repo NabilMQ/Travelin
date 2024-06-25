@@ -65,8 +65,8 @@ class _ReviewState extends State<Review> {
                       onPressed: () {},
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 40),
-                      child: Text(
+                      margin: const EdgeInsets.only(left: 40),
+                      child: const Text(
                         "Review",
                         style: TextStyle(
                           fontSize: 20,
@@ -78,7 +78,7 @@ class _ReviewState extends State<Review> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(20, 20, 20, 15),
+                margin: const EdgeInsets.fromLTRB(20, 20, 20, 15),
                 decoration: BoxDecoration(
                   color: getWhiteColor,
                   borderRadius: BorderRadius.circular(10),
@@ -89,19 +89,19 @@ class _ReviewState extends State<Review> {
                 child: Row(
                   children: [
                     Container(
-                        margin: EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(10),
                         child: Image.asset("assets/images/Borobudur.png")),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Candi Borobudur",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 25,
                           child: Text(
                             "Magelang, Jawa Tengah",
@@ -113,7 +113,7 @@ class _ReviewState extends State<Review> {
                           children: [
                             SvgPicture.asset("assets/icons/date1.svg"),
                             Container(
-                              margin: EdgeInsets.only(right: 10, left: 10),
+                              margin: const EdgeInsets.only(right: 10, left: 10),
                               child: Text(
                                 "26 Mei 2024",
                                 style: TextStyle(
@@ -137,14 +137,14 @@ class _ReviewState extends State<Review> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 20, bottom: 15),
-                child: Text(
+                margin: const EdgeInsets.only(left: 20, bottom: 15),
+                child: const Text(
                   "Rating",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 20, bottom: 20),
+                margin: const EdgeInsets.only(left: 20, bottom: 20),
                 child: Row(
                   children: List.generate(5, (index) {
                     return _buildStar(
@@ -153,15 +153,15 @@ class _ReviewState extends State<Review> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 20, bottom: 15),
-                child: Text(
+                margin: const EdgeInsets.only(left: 20, bottom: 15),
+                child: const Text(
                   "Tulis Ulasan",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 20, bottom: 15, right: 20),
-                padding: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 20, bottom: 15, right: 20),
+                padding: const EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                   color: getWhiteColor,
                   borderRadius: BorderRadius.circular(10),
@@ -175,9 +175,9 @@ class _ReviewState extends State<Review> {
                 child: SizedBox(
                   height: 100,
                   child: TextField(
-                    style: TextStyle(fontSize: 12),
+                    style: const TextStyle(fontSize: 12),
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                        border: const OutlineInputBorder(borderSide: BorderSide.none),
                         hintText: "Tulis Ulasanmu Disini...",
                         hintStyle: TextStyle(
                             fontSize: 12,
@@ -188,7 +188,7 @@ class _ReviewState extends State<Review> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                 decoration: BoxDecoration(
                   color: getWhiteColor,
                   borderRadius: BorderRadius.circular(10),
@@ -199,20 +199,20 @@ class _ReviewState extends State<Review> {
                 child: Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       child: Image.asset("assets/images/Benoa Resto.png"),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Benoa Resto",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 25,
                           child: Text(
                             "Magelang, Jawa Tengah",
@@ -223,7 +223,7 @@ class _ReviewState extends State<Review> {
                         Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(
+                              margin: const EdgeInsets.only(
                                 right: 10,
                               ),
                               child: Text(
@@ -236,7 +236,7 @@ class _ReviewState extends State<Review> {
                             ),
                             SvgPicture.asset("assets/icons/Time1.svg"),
                             Container(
-                              margin: EdgeInsets.only(left: 25),
+                              margin: const EdgeInsets.only(left: 25),
                               child: Text(
                                 "11:30 WIB",
                                 style: TextStyle(
@@ -260,14 +260,14 @@ class _ReviewState extends State<Review> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 20, bottom: 15),
-                child: Text(
+                margin: const EdgeInsets.only(left: 20, bottom: 15),
+                child: const Text(
                   "Rating",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 20, bottom: 15),
+                margin: const EdgeInsets.only(left: 20, bottom: 15),
                 child: Row(
                   children: List.generate(5, (index) {
                     return _buildStar(index, _benoaRating, _updateBenoaRating);
@@ -275,15 +275,15 @@ class _ReviewState extends State<Review> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 20, bottom: 15),
-                child: Text(
+                margin: const EdgeInsets.only(left: 20, bottom: 15),
+                child: const Text(
                   "Tulis Ulasan",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 20, bottom: 15, right: 20),
-                padding: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 20, bottom: 15, right: 20),
+                padding: const EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                   color: getWhiteColor,
                   borderRadius: BorderRadius.circular(10),
@@ -297,9 +297,9 @@ class _ReviewState extends State<Review> {
                 child: SizedBox(
                   height: 100,
                   child: TextField(
-                    style: TextStyle(fontSize: 12),
+                    style: const TextStyle(fontSize: 12),
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                        border: const OutlineInputBorder(borderSide: BorderSide.none),
                         hintText: "Tulis Ulasanmu Disini...",
                         hintStyle: TextStyle(
                             fontSize: 12,

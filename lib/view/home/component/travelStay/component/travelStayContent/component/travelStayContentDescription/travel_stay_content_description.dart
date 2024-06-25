@@ -22,7 +22,7 @@ class _TravelStayContentDescriptionState extends State<TravelStayContentDescript
     return Expanded(
       flex: 3,
       child: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 10,
           vertical: 5,
         ),

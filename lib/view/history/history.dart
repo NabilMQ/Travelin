@@ -68,7 +68,8 @@ class _HistoryState extends State<History> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.fromLTRB(20, 15, 20, 0),
+            height: 48,
+            margin: const EdgeInsets.fromLTRB(10, 15, 10, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -81,7 +82,6 @@ class _HistoryState extends State<History> {
                           _changeContent("Belum Bayar");
                         },
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
                           fixedSize: const Size(double.infinity, double.infinity),
                           backgroundColor: value == "Belum Bayar"
                               ? getOrangeColor
@@ -113,7 +113,6 @@ class _HistoryState extends State<History> {
                             _changeContent("Selesai");
                           },
                           style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
                             fixedSize: const Size(double.infinity, double.infinity),
                             backgroundColor: value == "Selesai"
                                 ? getOrangeColor
@@ -144,7 +143,6 @@ class _HistoryState extends State<History> {
                           _changeContent("Dibatalkan");
                         },
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
                           fixedSize: const Size(double.infinity, double.infinity),
                           backgroundColor: value == "Dibatalkan"
                               ? getOrangeColor
@@ -322,7 +320,8 @@ class _HistoryState extends State<History> {
                           Row(
                             children: [
                               SvgPicture.asset(
-                                "assets/icons/date1.svg",
+                                "assets/icons/Date.svg",
+                                colorFilter: ColorFilter.mode(getGreyColor, BlendMode.srcIn),
                                 alignment: Alignment.centerLeft,
                               ),
                               const SizedBox(width: 5),

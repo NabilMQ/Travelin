@@ -23,6 +23,14 @@ String getTravelDataPrice (int index) {
   return TravelModel.travelData[index].values.first["harga"].toString();
 }
 
+String getTravelDataLocation (int index) {
+  return TravelModel.travelData[index].values.first["lokasi"].toString();
+}
+
+GeoPoint getTravelDataCoordinate (int index) {
+  return TravelModel.travelData[index].values.first["koordinat"];
+}
+
 String getTravelDataDescriptionDetail (int index) {
   return TravelModel.travelData[index].values.first["deskripsi singkat"].toString();
 }

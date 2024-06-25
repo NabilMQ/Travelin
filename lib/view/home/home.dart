@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/view/customBotNavBar/custom_bot_nav_bar.dart';
+import 'package:travelin/view/history/history.dart';
 import 'package:travelin/view/home/component/nearestRestaurant/component/nearestRestaurantContent/nearest_restaurant_content.dart';
 import 'package:travelin/view/home/component/nearestRestaurant/component/nearestRestaurantHeader/nearest_restaurant_header.dart';
 import 'package:travelin/view/home/component/popularTravel/popular_travel.dart';
@@ -29,41 +30,49 @@ class _HomeState extends State<Home> {
       backgroundColor: getWhiteColor,
       body: Stack(
         children: [
-          SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
-            child: Column(  
-              children: [
-                SizedBox(
-                  width: size.width,
-                  height: size.height * 0.205,
-                  child: const Stack(
-                    children: [
-                      BackgroundColorHeader(),
-          
-                      BackgroundImageHeader(),
-          
-                      TextHeader(),
-          
-                      SearchHeader(),
-                    ],
-                  ),
-                ),
-                  
-                const TravelLocation(),
-                            
-                const TravelCategory(),
-                            
-                const PopularTravel(),
-                  
-                const TravelStay(),
-                  
-                const NearestRestaurantHeader(),
-                
-                const NearestRestaurantContent(),
+          ValueListenableBuilder(
+            valueListenable: customBotNavBarValue,
+            builder:(context, value, child) {
+              if (value == 2) {
+                return const History();
+              }
+              return SingleChildScrollView(
+                physics: const ClampingScrollPhysics(),
+                child: Column(  
+                  children: [
+                    SizedBox(
+                      width: size.width,
+                      height: size.height * 0.205,
+                      child: const Stack(
+                        children: [
+                          BackgroundColorHeader(),
+              
+                          BackgroundImageHeader(),
+              
+                          TextHeader(),
+              
+                          SearchHeader(),
+                        ],
+                      ),
+                    ),
+                      
+                    const TravelLocation(),
+                                
+                    const TravelCategory(),
+                                
+                    const PopularTravel(),
+                      
+                    const TravelStay(),
+                      
+                    const NearestRestaurantHeader(),
+                    
+                    const NearestRestaurantContent(),
 
-                const SizedBox(height: 94),
-              ],
-            ),
+                    const SizedBox(height: 94),
+                  ],
+                ),
+              );
+            },
           ),
 
           const CustomBotNavBar(),

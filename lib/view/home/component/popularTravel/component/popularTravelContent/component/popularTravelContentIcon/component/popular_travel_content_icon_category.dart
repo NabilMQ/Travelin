@@ -31,7 +31,6 @@ class _PopularTravelContentIconCategoryState extends State<PopularTravelContentI
             borderRadius: BorderRadius.circular(100)
           ),
           child: SvgPicture.asset(
-            // "assets/icons/${getTravelDataType(widget.index)}.svg",
             getTravelType.entries.firstWhere((element) => element.value == getTravelDataType(widget.index)).key.toString(),
             fit: BoxFit.scaleDown,
           ),
