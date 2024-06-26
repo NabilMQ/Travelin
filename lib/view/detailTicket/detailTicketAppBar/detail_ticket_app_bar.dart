@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:travelin/controller/custom_style_controller.dart';
 
-class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  final Size preferredSize;
-  const DetailAppBar({super.key}) : preferredSize = const Size.fromHeight(kToolbarHeight);
+class DetailTicketAppBar extends StatefulWidget {
+  const DetailTicketAppBar({ super.key });
 
+  @override
+  State <DetailTicketAppBar> createState() => _DetailTicketAppBarState();
+}
+
+class _DetailTicketAppBarState extends State<DetailTicketAppBar> {
   @override
   Widget build(BuildContext context) {
 
@@ -43,7 +46,7 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
 
           Center(
             child: Text(
-              "Detail",
+              "Detail Ticket",
               style: TextStyle(
                 fontSize: 20,
                 fontFamily: getCustomFont,

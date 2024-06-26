@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/custom_style_controller.dart';
+import 'package:travelin/view/detailTicket/detail_ticket.dart';
 
 class DetailTravelButtonBuy extends StatefulWidget {
-  const DetailTravelButtonBuy({ super.key });
+  const DetailTravelButtonBuy({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   State <DetailTravelButtonBuy> createState() => _DetailTravelButtonBuyState();
@@ -14,7 +20,13 @@ class _DetailTravelButtonBuyState extends State<DetailTravelButtonBuy> {
     return Center(
       child: ElevatedButton(
         onPressed: () {
-
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return DetailTicket(index: widget.index);
+              },
+            ),
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: getOrangeColor,

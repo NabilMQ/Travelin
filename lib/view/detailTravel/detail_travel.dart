@@ -45,71 +45,85 @@ class _DetailTravelState extends State<DetailTravel> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: getWhiteColor,
-      appBar: const DetailAppBar(),
-      body: Center(
-        child: Container(
-          width: size.width * 0.9,
-          margin: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: getWhiteColor,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: getBlackColor.withOpacity(0.25),
-                blurRadius: 5,
-              ),
-            ],
-          ),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DetailTravelCarouselSlider(index: widget.index),
-                  
-                  const SizedBox(height: 16),
-                  
-                  DetailTravelName(index: widget.index),
-
-                  DetailTravelLocation(index: widget.index),
-
-                  const SizedBox(height: 16),
-
-                  const DetailTravelDescription(),
-
-                  const SizedBox(height: 16),
-
-                  const DetailTravelMapHeader(),
-
-                  const SizedBox(height: 16),
-
-                  DetailTravelMap(index: widget.index),
-
-                  const SizedBox(height: 16),
-
-                  const DetailTravelReviewHeader(),
-                  
-                  const SizedBox(height: 16),
-
-                  SizedBox(
-                    height: 120,  // Adjusted height
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: List.generate(3, (index) {
-                        return const DetailTravelReviewContent();
-                      })
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Center(
+              child: Container(
+                width: size.width * 0.9,
+                margin: const EdgeInsets.only(
+                  top: 66,
+                  left: 10,
+                  bottom: 10,
+                  right: 10,
+                ),
+                decoration: BoxDecoration(
+                  color: getWhiteColor,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: getBlackColor.withOpacity(0.25),
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        DetailTravelCarouselSlider(index: widget.index),
+                        
+                        const SizedBox(height: 16),
+                        
+                        DetailTravelName(index: widget.index),
+            
+                        DetailTravelLocation(index: widget.index),
+            
+                        const SizedBox(height: 16),
+            
+                        const DetailTravelDescription(),
+            
+                        const SizedBox(height: 16),
+            
+                        const DetailTravelMapHeader(),
+            
+                        const SizedBox(height: 16),
+            
+                        DetailTravelMap(index: widget.index),
+            
+                        const SizedBox(height: 16),
+            
+                        const DetailTravelReviewHeader(),
+                        
+                        const SizedBox(height: 16),
+            
+                        SizedBox(
+                          height: 120,  // Adjusted height
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: List.generate(3, (index) {
+                              return const DetailTravelReviewContent();
+                            })
+                          ),
+                        ),
+            
+                        const SizedBox(height: 16),
+            
+                        DetailTravelButtonBuy(index: widget.index,),
+                      ],
                     ),
                   ),
-
-                  const SizedBox(height: 16),
-
-                  const DetailTravelButtonBuy(),
-                ],
+                ),
               ),
             ),
-          ),
+            
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: DetailAppBar(),
+            ),
+          ],
         ),
       ),
     );
