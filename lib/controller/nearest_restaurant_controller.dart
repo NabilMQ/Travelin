@@ -27,6 +27,35 @@ String getNearestRestaurantDataInformation (int index) {
   return NearestRestaurantModel.nearestRestaurantData[index].values.first["keterangan"].toString();
 }
 
+Map <String, dynamic> getNearestRestaurantDataMenu (int index) {
+  return NearestRestaurantModel.nearestRestaurantData[index].values.first["makanan"];
+}
+
+MapEntry <String, dynamic> getNearestRestaurantDataMenuIndex(int index, int elIndex) {
+  return getNearestRestaurantDataMenu(index).entries.elementAt(elIndex);
+}
+
+String getNearestRestaurantDataMenuIndexName(int index, int elIndex) {
+  return getNearestRestaurantDataMenuIndex(index, elIndex).key;
+}
+
+String getNearestRestaurantDataMenuIndexInformation(int index, int elIndex) {
+  return getNearestRestaurantDataMenuIndex(index, elIndex).value["keterangan"];
+}
+
+int getNearestRestaurantDataMenuIndexPrice(int index, int elIndex) {
+  return getNearestRestaurantDataMenuIndex(index, elIndex).value["harga"];
+}
+
+int getNearestRestaurantDataMenuLength(int index) {
+  return getNearestRestaurantDataMenu(index).entries.length;
+}
+
+Future <String> getNearestRestaurantDataMenuIndexImage (int index, int elIndex) async {
+  String tempMainImage = await FirebaseStorage.instanceFor(bucket: "gs://travelin-e2b24.appspot.com").ref("Restoran/${getNearestRestaurantDataName(index)}/makanan/").child(getNearestRestaurantDataMenuIndex(index, elIndex).value["foto"].toString()).getDownloadURL();
+  return tempMainImage;
+}
+
 Future <String> getNearestRestaurantDataMainImage (int index) async {
   String tempMainImage = await FirebaseStorage.instanceFor(bucket: "gs://travelin-e2b24.appspot.com").ref("Restoran/${getNearestRestaurantDataName(index)}/").child(NearestRestaurantModel.nearestRestaurantData[index].values.first["foto utama"].toString()).getDownloadURL();
   return tempMainImage;

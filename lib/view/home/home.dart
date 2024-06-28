@@ -21,6 +21,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
 
@@ -33,6 +34,11 @@ class _HomeState extends State<Home> {
           ValueListenableBuilder(
             valueListenable: customBotNavBarValue,
             builder:(context, value, child) {
+
+              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                setState(() {});
+              });
+
               if (value == 2) {
                 return const History();
               }

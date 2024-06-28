@@ -12,9 +12,11 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     Size size = MediaQuery.of(context).size;
 
-    return SizedBox(
+    return Container(
       width: size.width,
       height: 56,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      color: getWhiteColor,
       child: Stack(
         children: [
           Row(

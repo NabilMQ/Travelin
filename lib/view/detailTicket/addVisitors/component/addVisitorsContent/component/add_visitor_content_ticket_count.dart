@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/controller/travel_controller.dart';
+import 'package:travelin/view/detailTicket/detail_ticket.dart';
 
 class AddVisitorContentTicketCount extends StatefulWidget {
   const AddVisitorContentTicketCount({
@@ -75,6 +76,7 @@ class _AddVisitorContentTicketCountState extends State<AddVisitorContentTicketCo
                           onTap: () {
                             if (widget.valueNotifier.value > 0) {
                               widget.valueNotifier.value--;
+                              sumTicket.value--;
                             }
                           },
                           child: SizedBox(
@@ -158,6 +160,7 @@ class _AddVisitorContentTicketCountState extends State<AddVisitorContentTicketCo
                           splashColor: getOrangeColor,
                           onTap: () {
                             widget.valueNotifier.value++;
+                            sumTicket.value++;
                           },
                           child: SizedBox(
                             width: 25,

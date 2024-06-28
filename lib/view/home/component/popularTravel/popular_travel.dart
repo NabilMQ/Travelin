@@ -31,7 +31,6 @@ class _PopularTravelState extends State<PopularTravel> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 processsTravelData(snapshot);
-                getTravelDataCoordinate(0);
                 return const PopularTravelContent();
               }
           

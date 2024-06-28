@@ -55,33 +55,12 @@ void onPasswordFocusChange() {
   getIsPasswordFocused.value = !getIsPasswordFocused.value;
 }
 
-// Future <void> signUserIn(String email, String password) async {
-//   // try sign in 
-//   try {
-//     await FirebaseAuth.instance.signInWithEmailAndPassword(
-//       email: email,
-//       password: password,
-//     );
-//   } on FirebaseAuthException catch (e) {
-//     // WRONG EMAIL
-//     if (e.code == 'user-not-found') {
-//       // show error to user
-//       // showErrorDialog('User not found');
-//     } 
-//     // WRONG PASSWORD
-//     else if (e.code == 'wrong-password') {
-//       // show error to user
-//       // showErrorDialog('Wrong password');
-//     }
-//   }
-// }
-
 Future <void> signUserIn(String email, String password) async {
   // try sign in 
   try {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: "testtest@gmail.com",
-      password: "abcdefgh",
+      email: email,
+      password: password,
     );
   } on FirebaseAuthException catch (e) {
     // WRONG EMAIL
@@ -96,6 +75,27 @@ Future <void> signUserIn(String email, String password) async {
     }
   }
 }
+
+// Future <void> signUserIn(String email, String password) async {
+//   // try sign in 
+//   try {
+//     await FirebaseAuth.instance.signInWithEmailAndPassword(
+//       email: "testtest@gmail.com",
+//       password: "abcdefgh",
+//     );
+//   } on FirebaseAuthException catch (e) {
+//     // WRONG EMAIL
+//     if (e.code == 'user-not-found') {
+//       // show error to user
+//       // showErrorDialog('User not found');
+//     } 
+//     // WRONG PASSWORD
+//     else if (e.code == 'wrong-password') {
+//       // show error to user
+//       // showErrorDialog('Wrong password');
+//     }
+//   }
+// }
 
 final user = FirebaseAuth.instance.currentUser!;
 

@@ -1,8 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:travelin/controller/custom_style_controller.dart';
-import 'package:travelin/controller/travel_controller.dart';
 import 'package:travelin/view/detailTicket/addVisitors/component/addVisitorsContent/component/add_visitor_content_header.dart';
 import 'package:travelin/view/detailTicket/addVisitors/component/addVisitorsContent/component/add_visitor_content_ticket_count.dart';
 import 'package:travelin/view/detailTicket/detail_ticket.dart';

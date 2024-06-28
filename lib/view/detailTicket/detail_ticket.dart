@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/custom_style_controller.dart';
-import 'package:travelin/view/customBotNavBar/custom_bot_nav_bar.dart';
 import 'package:travelin/view/detailTicket/addVisitors/component/addVisitorsContent/add_visitors_content.dart';
 import 'package:travelin/view/detailTicket/addVisitors/component/addVisitorsHeader/add_visitors_header.dart';
 import 'package:travelin/view/detailTicket/chooseDate/component/chooseDateContent/choose_date_content.dart';
 import 'package:travelin/view/detailTicket/chooseDate/component/chooseDateHeader/choose_date_header.dart';
-import 'package:travelin/view/detailTicket/chooseNearestRestaurant/component/chooseNearestRestaurantContent/choose_nearest_restaurant_content.dart';
-import 'package:travelin/view/detailTicket/chooseNearestRestaurant/component/chooseNearestRestaurantHeader/choose_nearest_restaurant_header.dart';
 import 'package:travelin/view/detailTicket/detailTicketAppBar/detail_ticket_app_bar.dart';
-import 'package:travelin/view/detailTicket/orderFood/order_food.dart';
+import 'package:travelin/view/detailTicket/payButton/pay_button.dart';
 import 'package:travelin/view/detailTicket/ticket/ticket.dart';
 
 class DetailTicket extends StatefulWidget {
@@ -27,6 +24,7 @@ class DetailTicket extends StatefulWidget {
 
 ValueNotifier <int> adultTicketCount = ValueNotifier <int> (0);
 ValueNotifier <int> childTicketCount = ValueNotifier <int> (0);
+ValueNotifier <int> sumTicket = ValueNotifier <int> (0);
 
 ScrollController chooseDateScrollController = ScrollController();
 
@@ -138,88 +136,43 @@ class _DetailTicketState extends State<DetailTicket> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: getWhiteColor,
-      body: Stack(
-        children: [
-          SafeArea(
-            child: SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 66,
+                ),
                 child: Column(
                   children: [
-                    DetailTicketAppBar(),
                 
                     Ticket(index: widget.index),
-          
-                    ChooseDateHeader(),
-          
-                    SizedBox(height: 15),
-          
-                    ChooseDateContent(),
-          
-                    SizedBox(height: 15),
-          
-                    AddVisitorsHeader(),
-          
-                    SizedBox(height: 15),
-          
+                      
+                    const ChooseDateHeader(),
+                      
+                    const SizedBox(height: 15),
+                      
+                    const ChooseDateContent(),
+                      
+                    const SizedBox(height: 15),
+                      
+                    const AddVisitorsHeader(),
+                      
+                    const SizedBox(height: 15),
+                      
                     AddVisitorsContent(index: widget.index),
-          
-                    OrderFood(),
-          
-                    SizedBox(height: 15),
-          
-                    ValueListenableBuilder(
-                      valueListenable: isOrderFood, 
-                      builder: (context, isOrderFoodValue, child) {
-                        if (isOrderFoodValue) {
-                          return ChooseNearestRestaurantHeader();
-                        }
-
-                        return SizedBox.shrink();
-                      },
-                    ),
-
-                    ValueListenableBuilder(
-                      valueListenable: isOrderFood, 
-                      builder: (context, isOrderFoodValue, child) {
-                        if (isOrderFoodValue) {
-                          return SizedBox(height: 15);
-                        }
-
-                        return SizedBox.shrink();
-                      },
-                    ),
-
-                    ValueListenableBuilder(
-                      valueListenable: isOrderFood, 
-                      builder: (context, isOrderFoodValue, child) {
-                        if (isOrderFoodValue) {
-                          return ChooseNearestRestaurantContent();
-                        }
-
-                        return SizedBox.shrink();
-                      },
-                    ),
-
-                    ValueListenableBuilder(
-                      valueListenable: isOrderFood, 
-                      builder: (context, isOrderFoodValue, child) {
-                        if (isOrderFoodValue) {
-                          return SizedBox(height: 65);
-                        }
-
-                        return SizedBox.shrink();
-                      },
-                    ),
                   ],
                 ),
               ),
-            ),
-          ),
-
-          CustomBotNavBar(),
-        ],
+            ),          
+            const DetailTicketAppBar(),
+        
+            PayButton(index: widget.index),
+          ],
+        ),
       )
     );
   }

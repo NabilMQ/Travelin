@@ -23,6 +23,14 @@ String getTravelStayDataType (int index) {
   return TravelStayModel.travelStayData[index].values.first["tipe"].toString();
 }
 
+String getTravelStayDataLocation (int index) {
+  return TravelStayModel.travelStayData[index].values.first["lokasi"].toString();
+}
+
+GeoPoint getTravelStayDataCoordinate (int index) {
+  return TravelStayModel.travelStayData[index].values.first["koordinat"];
+}
+
 Future <String> getTravelStayDataMainImage (int index) async {
   String tempMainImage = await FirebaseStorage.instanceFor(bucket: "gs://travelin-e2b24.appspot.com").ref("Penginapan/${getTravelStayDataName(index)}/").child(TravelStayModel.travelStayData[index].values.first["foto utama"].toString()).getDownloadURL();
   return tempMainImage;

@@ -119,10 +119,7 @@ class _DetailTravelState extends State<DetailTravel> {
               ),
             ),
             
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: DetailAppBar(),
-            ),
+            const DetailAppBar(),
           ],
         ),
       ),

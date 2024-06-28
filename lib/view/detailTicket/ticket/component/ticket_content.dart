@@ -21,7 +21,7 @@ class _TicketContentState extends State<TicketContent> {
     return Expanded(
       flex: 5,
       child: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: 20,
           right: 20,
           bottom: 20,

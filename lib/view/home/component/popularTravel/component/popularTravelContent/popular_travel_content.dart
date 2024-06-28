@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travelin/controller/custom_style_controller.dart';
 import 'package:travelin/controller/travel_controller.dart';
+import 'package:travelin/view/customBotNavBar/custom_bot_nav_bar.dart';
 import 'package:travelin/view/detailTravel/detail_travel.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/component/popularTravelContentDescription/popular_travel_content_description.dart';
 import 'package:travelin/view/home/component/popularTravel/component/popularTravelContent/component/popularTravelContentIcon/popular_travel_content_icon.dart';
@@ -32,6 +33,7 @@ class _PopularTravelContentState extends State<PopularTravelContent> {
           children: List.generate(getTravelDataLength, (index) {
             return GestureDetector(
               onTap: () {
+                customBotNavBarValue.value = 1;
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
